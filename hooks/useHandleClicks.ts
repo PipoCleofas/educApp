@@ -84,6 +84,34 @@ const useHandleClicks = () => {
         router.push("/puzzlefirst");
     }
 
+    const handleBioPicsPress = () => {
+        router.push("/readingscalar");
+    }
+
+    const handleNextBioPicsPress = () => {
+        router.push("/scalar");
+    }
+
+    const handleNextBioPicsPress2 = () => {
+        router.push("/scalar2");
+    }
+
+    const handleNextBioPicsPress3 = () => {
+        router.push("/scalar3");
+    }
+
+    const handleNextBioPicsPress4 = () => {
+        router.push("/scalar4");
+    }
+
+    const handleNextBioPicsPress5 = () => {
+        router.push("/scalar5");
+    }
+
+    const handleScalarSubmitPress = () => {
+        router.push("/scalarscore");
+    }
+
     const handleGeoFirstPuzzlePress = async () => {
         await AsyncStorage.setItem('puzzleAnswer1', geoPuzzle1)
         router.push("/puzzlesecond");
@@ -172,6 +200,13 @@ const useHandleClicks = () => {
         handleQuakePreparePress,
         handleQuakePrepare2Press,
         handleQuakePrepare3Press,
+        handleBioPicsPress,
+        handleNextBioPicsPress,
+        handleNextBioPicsPress2,
+        handleNextBioPicsPress3,
+        handleNextBioPicsPress4,
+        handleNextBioPicsPress5,
+        handleScalarSubmitPress,
     };
 };
 

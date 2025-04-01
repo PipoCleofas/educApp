@@ -30,6 +30,14 @@ export default function TabLayout() {
           <Stack.Screen name="quakeprepare1" options={{ headerShown: false }} />
           <Stack.Screen name="quakeprepare2" options={{ headerShown: false }} />
           <Stack.Screen name="quakeprepare3" options={{ headerShown: false }} />
+          <Stack.Screen name="scalar" options={{ headerShown: false }} />
+          <Stack.Screen name="scalar2" options={{ headerShown: false }} />
+          <Stack.Screen name="scalar3" options={{ headerShown: false }} />
+          <Stack.Screen name="scalar4" options={{ headerShown: false }} />
+          <Stack.Screen name="scalar5" options={{ headerShown: false }} />
+          <Stack.Screen name="scalarscore" options={{ headerShown: false }} />
+
+          <Stack.Screen name="readingscalar" options={{ headerShown: false }} />
 
           <Stack.Screen name="earthscienceprogress" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" options={{ headerShown: false }} />
