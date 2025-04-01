@@ -26,6 +26,11 @@ export default function TabLayout() {
           <Stack.Screen name="geopuzzlescore" options={{ headerShown: false }} />
           <Stack.Screen name="geolayer" options={{ headerShown: false }} />
           <Stack.Screen name="geolayerscore" options={{ headerShown: false }} />
+          <Stack.Screen name="wordsearchpuzzle" options={{ headerShown: false }} />
+          <Stack.Screen name="quakeprepare1" options={{ headerShown: false }} />
+          <Stack.Screen name="quakeprepare2" options={{ headerShown: false }} />
+          <Stack.Screen name="quakeprepare3" options={{ headerShown: false }} />
+
           <Stack.Screen name="earthscienceprogress" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" options={{ headerShown: false }} />
         </Stack>

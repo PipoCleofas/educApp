@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
 const EarthScienceScreen = () => {
   const router = useRouter();
-  const {handleGeoPuzzlePress, handleGeoLayerPress, handleEarthScienceProgressPress} = useHandleClicks();
+  const {handleGeoPuzzlePress, handleGeoLayerPress, handleEarthScienceProgressPress,handleWordPuzzlePress,handleQuakePreparePress} = useHandleClicks();
 
   return (
     <View style={styles.container}>
@@ -26,8 +26,10 @@ const EarthScienceScreen = () => {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleWordPuzzlePress}><Text style={styles.buttonText}>Word Puzzle</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleGeoLayerPress}><Text style={styles.buttonText}>Geo Layers</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleGeoPuzzlePress}><Text style={styles.buttonText}>Geo Puzzles</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleQuakePreparePress}><Text style={styles.buttonText}>Quake Prepare</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleEarthScienceProgressPress}><Text style={styles.buttonText}>Progress</Text></TouchableOpacity>
       </View>
     </View>

@@ -119,6 +119,22 @@ const useHandleClicks = () => {
         router.push("/Choose");
     }
 
+    const handleWordPuzzlePress = () => {
+        router.push("/wordsearchpuzzle");
+    }
+
+    const handleQuakePreparePress = () => {
+        router.push("/quakeprepare1");
+    }  
+    
+    const handleQuakePrepare2Press = () => {
+        router.push("/quakeprepare2");
+    }  
+
+    const handleQuakePrepare3Press = () => {
+        router.push("/quakeprepare3");
+    }  
+    
     const handleGeoLayerPress = () => {
 
         router.push("/geolayer");
@@ -152,6 +168,10 @@ const useHandleClicks = () => {
         geoPuzzle5,
         setGeoPuzzle5,
         handleEarthScienceProgressPress,
+        handleWordPuzzlePress,
+        handleQuakePreparePress,
+        handleQuakePrepare2Press,
+        handleQuakePrepare3Press,
     };
 };
 
