@@ -35,7 +35,18 @@ export default function TabLayout() {
           <Stack.Screen name="scalar3" options={{ headerShown: false }} />
           <Stack.Screen name="scalar4" options={{ headerShown: false }} />
           <Stack.Screen name="scalar5" options={{ headerShown: false }} />
-          <Stack.Screen name="scalarscore" options={{ headerShown: false }} />
+ 
+          <Stack.Screen name="typesofforce1" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce2" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce3" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce4" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce5" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce6" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce7" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce8" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce9" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforce10" options={{ headerShown: false }} />
+          <Stack.Screen name="typesofforcescore" options={{ headerShown: false }} />
 
           <Stack.Screen name="readingscalar" options={{ headerShown: false }} />
 

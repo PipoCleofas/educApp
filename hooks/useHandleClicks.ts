@@ -112,6 +112,50 @@ const useHandleClicks = () => {
         router.push("/scalarscore");
     }
 
+    const handleTypesOfForcwePress = () => {
+        router.push("/typesofforce1" as any);
+    }
+
+    const handleTypesOfForcwePress2 = () => {
+        router.push("/typesofforce2" as any);
+    }
+
+    const handleTypesOfForcwePress3 = () => {
+        router.push("/typesofforce3" as any);
+    }
+
+    const handleTypesOfForcwePress4 = () => {
+        router.push("/typesofforce4" as any);
+    }
+
+    const handleTypesOfForcwePress5 = () => {
+        router.push("/typesofforce5" as any);
+    }
+
+    const handleTypesOfForcwePress6 = () => {
+        router.push("/typesofforce6" as any);
+    }
+
+    const handleTypesOfForcwePress7 = () => {
+        router.push("/typesofforce7" as any);
+    }
+
+    const handleTypesOfForcwePress8 = () => {
+        router.push("/typesofforce8" as any);
+    }
+
+    const handleTypesOfForcwePres9 = () => {
+        router.push("/typesofforce9" as any);
+    }
+
+    const handleTypesOfForcwePres10 = () => {
+        router.push("/typesofforce10" as any);
+    }
+
+    const handleTypesOfForceSubmit = () => {
+        router.push("/typesofforcescore" as any);
+    }
+
     const handleGeoFirstPuzzlePress = async () => {
         await AsyncStorage.setItem('puzzleAnswer1', geoPuzzle1)
         router.push("/puzzlesecond");
@@ -207,6 +251,18 @@ const useHandleClicks = () => {
         handleNextBioPicsPress4,
         handleNextBioPicsPress5,
         handleScalarSubmitPress,
+        handleTypesOfForcwePress,
+        handleTypesOfForcwePres10,
+        handleTypesOfForcwePres9,
+        handleTypesOfForcwePress8,
+        handleTypesOfForcwePress7,
+        handleTypesOfForcwePress6,
+        handleTypesOfForcwePress5,
+        handleTypesOfForcwePress4,
+        handleTypesOfForcwePress3,
+        handleTypesOfForcwePress2,
+        handleTypesOfForceSubmit,
+
     };
 };
 
