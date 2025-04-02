@@ -9,7 +9,7 @@ const useScore = () => {
     const [scalarScore, setScalarScore] = useState<number | null>(0)
     const [contactForceScore, setContactForceScore] = useState<number | null>(0)
     const [picsWordScore, setPicsWordScore] = useState<number | null>(0)
-
+    const [oneToFifteenScore, setOneToFifteenScore] = useState<number | null>(0)
     // geo puzzle
       // Use useState instead of useRef for reactive updates
   const [geoPuzzle1, setGeoPuzzle1] = useState("");
@@ -42,6 +42,8 @@ const useScore = () => {
         setContactForceScore,
         picsWordScore,
         setPicsWordScore,
+        oneToFifteenScore,
+        setOneToFifteenScore,
     }
 }
 

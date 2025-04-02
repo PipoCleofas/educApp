@@ -173,6 +173,81 @@ const useHandleClicks = () => {
         router.push("/typesofforcescore" as any);
     }
 
+
+
+
+    const handleBioQuizPress = () => {
+        router.push("/plantmultiplechoice1" as any);
+    }
+
+    const handleBioQuizPress1 = () => {
+        router.push("/plantmultiplechoice2" as any);
+    }
+
+    const handleBioQuizPress2 = () => {
+        router.push("/plantmultiplechoice3" as any);
+    }
+
+    const handleBioQuizPress3 = () => {
+        router.push("/plantmultiplechoice4" as any);
+    }
+
+    const handleBioQuizPress4 = () => {
+        router.push("/plantmultiplechoice5" as any);
+    }
+
+    const handleBioQuizPress5 = () => {
+        router.push("/plantmultiplechoice6" as any);
+    }
+
+    const handleBioQuizPress6 = () => {
+        router.push("/plantmultiplechoice7" as any);
+    }
+
+    const handleBioQuizPress7 = () => {
+        router.push("/plantmultiplechoice8" as any);
+    }
+
+    const handleBioQuizPress8 = () => {
+        router.push("/plantmultiplechoice9" as any);
+    }
+
+    const handleBioQuizPress9 = () => {
+        router.push("/plantmultiplechoice10" as any);
+    }
+
+    const handleBioQuizPress10 = () => {
+        router.push("/plantmultiplechoice11" as any);
+    }
+
+    const handleBioQuizPress11 = () => {
+        router.push("/plantmultiplechoice12" as any);
+    }
+
+    const handleBioQuizPress12 = () => {
+        router.push("/plantmultiplechoice13" as any);
+    }
+
+    const handleBioQuizPress13 = () => {
+        router.push("/plantmultiplechoice14" as any);
+    }
+
+    const handleBioQuizPress14 = () => {
+        router.push("/plantmultiplechoice15" as any);
+    }
+
+    const handleBioQuizPress15 = () => {
+        router.push("/plantmultiplechoicescore" as any);
+    }
+
+
+
+
+
+
+
+
+
     const handleGeoFirstPuzzlePress = async () => {
         await AsyncStorage.setItem('puzzleAnswer1', geoPuzzle1)
         router.push("/puzzlesecond");
@@ -283,6 +358,22 @@ const useHandleClicks = () => {
         handleNext4Pics1WordPress1,
         handleNext4Pics1WordPress2,
         handleNext4Pics1WordPress3,
+        handleBioQuizPress,
+        handleBioQuizPress1,
+        handleBioQuizPress2,
+        handleBioQuizPress3,
+        handleBioQuizPress4,
+        handleBioQuizPress5,
+        handleBioQuizPress6,
+        handleBioQuizPress7,
+        handleBioQuizPress8,
+        handleBioQuizPress9,
+        handleBioQuizPress10,
+        handleBioQuizPress11,
+        handleBioQuizPress12,
+        handleBioQuizPress13,
+        handleBioQuizPress14,
+        handleBioQuizPress15,
 
     };
 };

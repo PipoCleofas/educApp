@@ -55,6 +55,23 @@ export default function TabLayout() {
 
           <Stack.Screen name="readingscalar" options={{ headerShown: false }} />
 
+          <Stack.Screen name="plantmultiplechoice1" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice2" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice3" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice4" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice5" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice6" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice7" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice8" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice9" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice10" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice11" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice12" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice13" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice14" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoice15" options={{ headerShown: false }} />
+          <Stack.Screen name="plantmultiplechoicescore" options={{ headerShown: false }} />
+
           <Stack.Screen name="earthscienceprogress" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" options={{ headerShown: false }} />
         </Stack>
