@@ -6,7 +6,7 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 
 const PhysicsScreen = () => {
   const router = useRouter();
-  const {handleBioPicsPress,handleTypesOfForcwePress} = useHandleClicks();
+  const {handleBioPicsPress,handleTypesOfForcwePress, handle4Pics1WordPress} = useHandleClicks();
 
   return (
     <View style={styles.container}>
@@ -27,6 +27,7 @@ const PhysicsScreen = () => {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.button} onPress={handle4Pics1WordPress}><Text style={styles.buttonText}>4 Pics 1 Word</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleTypesOfForcwePress}><Text style={styles.buttonText}>Bio-Link</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleBioPicsPress}><Text style={styles.buttonText}>Bio-Pics</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleBioPicsPress}><Text style={styles.buttonText}>Types of force</Text></TouchableOpacity>

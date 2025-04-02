@@ -48,6 +48,11 @@ export default function TabLayout() {
           <Stack.Screen name="typesofforce10" options={{ headerShown: false }} />
           <Stack.Screen name="typesofforcescore" options={{ headerShown: false }} />
 
+          <Stack.Screen name="picsword1" options={{ headerShown: false }} />
+          <Stack.Screen name="picsword2" options={{ headerShown: false }} />
+          <Stack.Screen name="picsword3" options={{ headerShown: false }} />
+          <Stack.Screen name="picswordscore" options={{ headerShown: false }} />
+
           <Stack.Screen name="readingscalar" options={{ headerShown: false }} />
 
           <Stack.Screen name="earthscienceprogress" options={{ headerShown: false }} />

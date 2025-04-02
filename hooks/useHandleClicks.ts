@@ -152,6 +152,23 @@ const useHandleClicks = () => {
         router.push("/typesofforce10" as any);
     }
 
+    const handle4Pics1WordPress = () => {
+        router.push("/picsword1" as any);
+    }
+
+    const handleNext4Pics1WordPress1 = () => {
+        router.push("/picsword2" as any);
+    }
+
+    const handleNext4Pics1WordPress2 = () => {
+        router.push("/picsword3" as any);
+    }
+
+    const handleNext4Pics1WordPress3 = () => {
+        router.push("/picswordscore" as any);
+    }
+
+
     const handleTypesOfForceSubmit = () => {
         router.push("/typesofforcescore" as any);
     }
@@ -262,6 +279,10 @@ const useHandleClicks = () => {
         handleTypesOfForcwePress3,
         handleTypesOfForcwePress2,
         handleTypesOfForceSubmit,
+        handle4Pics1WordPress,
+        handleNext4Pics1WordPress1,
+        handleNext4Pics1WordPress2,
+        handleNext4Pics1WordPress3,
 
     };
 };
