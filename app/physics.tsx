@@ -29,9 +29,7 @@ const PhysicsScreen = () => {
       <View style={styles.buttonContainer}>
       <TouchableOpacity style={styles.button} onPress={handle4Pics1WordPress}><Text style={styles.buttonText}>4 Pics 1 Word</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleTypesOfForcwePress}><Text style={styles.buttonText}>Bio-Link</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleBioPicsPress}><Text style={styles.buttonText}>Bio-Pics</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleBioPicsPress}><Text style={styles.buttonText}>Types of force</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Progress</Text></TouchableOpacity>
       </View>
     </View>
   );

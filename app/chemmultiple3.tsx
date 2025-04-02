@@ -1,15 +1,14 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
 
-const Question15: React.FC = () => {
-      const router = useRouter();
-    
+const Question3: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
+      const router = useRouter();
 
-  const {handleBioQuizPress15} = useHandleClicks();
+  const {ChemQuizPress3} = useHandleClicks();
 
   // Function to handle option selection (only updates state)
   const handleChange = (option: string) => {
@@ -23,8 +22,8 @@ const Question15: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption15', selectedOption);
-      handleBioQuizPress15()
+      await AsyncStorage.setItem('selectedOption3', selectedOption);
+      ChemQuizPress3()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
     } catch (error) {
@@ -38,12 +37,12 @@ const Question15: React.FC = () => {
                         <Text style={styles.exitText}>Back</Text>
                 </TouchableOpacity>
       <View style={styles.quizBox}>
-        <Text style={styles.title}>BIOLOGY QUIZ</Text>
+        <Text style={styles.title}>CHEMISTRY QUIZ</Text>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What do you call an interaction of food chains?</Text>
+          <Text style={styles.questionText}>Imagine that you performed an experiment in which you dissolved different samples of sugar (sugar cubes, extra fine sugar and regular table sugar) into water samples to compare how long they took to dissolve. What factor would be at least important to the design of this experiment?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Food Pyramid', 'B. Food Web', 'C. Food Nutrients', 'D. Food Supplement'].map((option) => (
+          {['A. All samples must be tested exactly at the same time.', 'B. The sugar samples must contain sugar and water only.', 'C. All water samples must have the same temperatures.', 'D. The same amount of sugar must be placed in each sample.'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -56,7 +55,7 @@ const Question15: React.FC = () => {
         <View style={styles.buttonContainer}>
          
           <TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
-            <Text style={styles.navButtonText}>Submit</Text>
+            <Text style={styles.navButtonText}>Next</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -65,20 +64,20 @@ const Question15: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#E0BBE4' },
-  exitButton: {
-    position: "absolute",
-    top: 20,
-    left: 20,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    backgroundColor: "#000",
-    borderRadius: 6,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
-  },
+    exitButton: {
+        position: "absolute",
+        top: 20,
+        left: 20,
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        backgroundColor: "#000",
+        borderRadius: 6,
+      },
+      exitText: {
+        color: "#fff",
+        fontSize: 14,
+      },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4F4F4F' },
   quizBox: { backgroundColor: 'white', padding: 20, borderRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, width: 320, alignItems: 'center' },
   title: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
   questionBox: { backgroundColor: '#007BFF', padding: 10, borderRadius: 10, marginBottom: 10 },
@@ -92,4 +91,4 @@ const styles = StyleSheet.create({
   navButtonText: { color: 'white', fontWeight: 'bold' }
 });
 
-export default Question15;
+export default Question3;

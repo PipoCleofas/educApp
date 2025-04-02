@@ -29,7 +29,6 @@ const BiologyScreen = () => {
           <Text style={styles.buttonText}>Bio-quiz</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Progress</Text>
         </TouchableOpacity>
       </View>
     </View>

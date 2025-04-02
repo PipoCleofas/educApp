@@ -4,12 +4,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
-const Question15: React.FC = () => {
-      const router = useRouter();
-    
+const Question10: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
+      const router = useRouter();
 
-  const {handleBioQuizPress15} = useHandleClicks();
+  const {ChemQuizPress10} = useHandleClicks();
 
   // Function to handle option selection (only updates state)
   const handleChange = (option: string) => {
@@ -23,8 +22,8 @@ const Question15: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption15', selectedOption);
-      handleBioQuizPress15()
+      await AsyncStorage.setItem('selectedOption10', selectedOption);
+      ChemQuizPress10()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
     } catch (error) {
@@ -34,16 +33,16 @@ const Question15: React.FC = () => {
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-                        <Text style={styles.exitText}>Back</Text>
-                </TouchableOpacity>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+                      <Text style={styles.exitText}>Back</Text>
+              </TouchableOpacity>
       <View style={styles.quizBox}>
-        <Text style={styles.title}>BIOLOGY QUIZ</Text>
+        <Text style={styles.title}>CHEMISTRY QUIZ</Text>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What do you call an interaction of food chains?</Text>
+          <Text style={styles.questionText}>What happens to blue litmus paper when dipped in vinegar?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Food Pyramid', 'B. Food Web', 'C. Food Nutrients', 'D. Food Supplement'].map((option) => (
+          {['A. Turns green', 'B. Turns red', 'C. Turns yellow', 'D. No change in color'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -54,7 +53,7 @@ const Question15: React.FC = () => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-         
+          
           <TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
             <Text style={styles.navButtonText}>Submit</Text>
           </TouchableOpacity>
@@ -65,7 +64,6 @@ const Question15: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#E0BBE4' },
   exitButton: {
     position: "absolute",
     top: 20,
@@ -79,6 +77,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 14,
   },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4F4F4F' },
   quizBox: { backgroundColor: 'white', padding: 20, borderRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, width: 320, alignItems: 'center' },
   title: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
   questionBox: { backgroundColor: '#007BFF', padding: 10, borderRadius: 10, marginBottom: 10 },
@@ -92,4 +91,4 @@ const styles = StyleSheet.create({
   navButtonText: { color: 'white', fontWeight: 'bold' }
 });
 
-export default Question15;
+export default Question10;

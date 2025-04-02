@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
+import useHandleClicks from "@/hooks/useHandleClicks";
 
 const ChemistryScreen = () => {
   const router = useRouter();
 
+  const {ChemQuizPress} = useHandleClicks();
   return (
     <View style={styles.container}>
       {/* Exit Button */}
@@ -25,12 +27,7 @@ const ChemistryScreen = () => {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Matter Match</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Change Challenge</Text></TouchableOpacity>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Atom Builder</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Progress</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={ChemQuizPress}><Text style={styles.buttonText}>Sci-Quiz</Text></TouchableOpacity>
       </View>
     </View>
   );

@@ -75,9 +75,7 @@ const useHandleClicks = () => {
         router.push("/earthsci");
     };
 
-    const handleEarthScienceProgressPress = () => {
-        router.push("/earthscienceprogress");
-    }
+    
 
     const handleGeoPuzzlePress = () => {
         console.log(1)
@@ -174,7 +172,49 @@ const useHandleClicks = () => {
     }
 
 
+    const ChemQuizPress = () => {
+        router.push("/chemmultiple1" as any);
+    }
 
+    const ChemQuizPress1 = () => {
+        router.push("/chemmultiple2" as any);
+    }
+
+    const ChemQuizPress2 = () => {
+        router.push("/chemmultiple3" as any);
+    }
+
+    const ChemQuizPress3 = () => {
+        router.push("/chemmultiple4" as any);
+    }
+
+    const ChemQuizPress4 = () => {
+        router.push("/chemmultiple5" as any);
+    }
+
+    const ChemQuizPress5 = () => {
+        router.push("/chemmultiple6" as any);
+    }
+
+    const ChemQuizPress6 = () => {
+        router.push("/chemmultiple7" as any);
+    }
+
+    const ChemQuizPress7 = () => {
+        router.push("/chemmultiple8" as any);
+    }
+
+    const ChemQuizPress8 = () => {
+        router.push("/chemmultiple9" as any);
+    }
+
+    const ChemQuizPress9 = () => {
+        router.push("/chemmultiple10" as any);
+    }
+
+    const ChemQuizPress10 = () => {
+        router.push("/chemmultiplescore" as any);
+    }
 
     const handleBioQuizPress = () => {
         router.push("/plantmultiplechoice1" as any);
@@ -331,7 +371,6 @@ const useHandleClicks = () => {
         setGeoPuzzle4,
         geoPuzzle5,
         setGeoPuzzle5,
-        handleEarthScienceProgressPress,
         handleWordPuzzlePress,
         handleQuakePreparePress,
         handleQuakePrepare2Press,
@@ -374,6 +413,17 @@ const useHandleClicks = () => {
         handleBioQuizPress13,
         handleBioQuizPress14,
         handleBioQuizPress15,
+        ChemQuizPress1,
+        ChemQuizPress2,
+        ChemQuizPress3,
+        ChemQuizPress4,
+        ChemQuizPress5,
+        ChemQuizPress6,
+        ChemQuizPress7,
+        ChemQuizPress8,
+        ChemQuizPress9,
+        ChemQuizPress10,
+        ChemQuizPress,
 
     };
 };

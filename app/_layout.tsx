@@ -72,6 +72,21 @@ export default function TabLayout() {
           <Stack.Screen name="plantmultiplechoice15" options={{ headerShown: false }} />
           <Stack.Screen name="plantmultiplechoicescore" options={{ headerShown: false }} />
 
+          <Stack.Screen name="chemmultiple1" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple2" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple3" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple4" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple5" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple6" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple7" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple8" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple9" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiple10" options={{ headerShown: false }} />
+          <Stack.Screen name="chemmultiplescore" options={{ headerShown: false }} />
+
+
+
+
           <Stack.Screen name="earthscienceprogress" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" options={{ headerShown: false }} />
         </Stack>
