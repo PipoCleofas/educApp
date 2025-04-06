@@ -6,13 +6,11 @@ import useAchievements from "@/hooks/useAchievements";
 export default function QuakePrepare() {
   const { handleGoBackPress } = useHandleClicks();
   const { addAchievement } = useAchievements();
-
   const router = useRouter();
- 
 
-  function handleSubmit(){
-    addAchievement("Smart One")
-    handleGoBackPress()
+  function handleSubmit() {
+    addAchievement("Smart One");
+    handleGoBackPress();
   }
 
   return (
@@ -23,7 +21,7 @@ export default function QuakePrepare() {
 
       <View style={styles.centeredContent}>
         <Text style={styles.questionText}>
-             3. What is the importance of getting ready in a disaster?
+          3. What is the importance of getting ready in a disaster?
         </Text>
         <TextInput
           style={styles.input}
@@ -45,7 +43,7 @@ export default function QuakePrepare() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4A3333", // Dark brown background
     padding: 16,
     justifyContent: "space-between",
     alignItems: "center",
@@ -56,11 +54,13 @@ const styles = StyleSheet.create({
     left: 20,
     paddingVertical: 6,
     paddingHorizontal: 12,
-    backgroundColor: "#000",
+    backgroundColor: "#fff", // White background for the exit button
     borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "#98D083", // Green border for the exit button
   },
   exitText: {
-    color: "#fff",
+    color: "#98D083", // Green text color for the exit button
     fontSize: 14,
   },
   centeredContent: {
@@ -70,33 +70,35 @@ const styles = StyleSheet.create({
   questionText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#F2FECA", // Light yellow color for the question text
     textAlign: "center",
     marginBottom: 10,
-    marginTop: 150
+    marginTop: 150,
   },
   input: {
     width: "100%",
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#98D083", // Green border color for input
     borderRadius: 8,
     padding: 10,
     fontSize: 16,
-    color: "#333",
-    backgroundColor: "#f9f9f9",
+    color: "#333", // Dark text color for input
+    backgroundColor: "#fff", // White background for the input field
     minHeight: 100,
   },
   nextButton: {
     width: "30%",
-    backgroundColor: "#007AFF",
+    backgroundColor: "#fff", // White background for the next button
     paddingVertical: 12,
     borderRadius: 8,
     marginBottom: 50,
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#98D083", // Green border for the button
   },
   nextButtonText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#98D083", // Green text color for the next button
   },
 });

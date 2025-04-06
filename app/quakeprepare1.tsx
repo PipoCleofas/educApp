@@ -36,7 +36,7 @@ export default function QuakePrepare() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4A3333", // Dark brown background
     padding: 16,
     justifyContent: "space-between",
     alignItems: "center",
@@ -47,11 +47,13 @@ const styles = StyleSheet.create({
     left: 20,
     paddingVertical: 6,
     paddingHorizontal: 12,
-    backgroundColor: "#000",
+    backgroundColor: "#fff", // White background for exit button
     borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "#98D083", // Green border around the button
   },
   exitText: {
-    color: "#fff",
+    color: "#98D083", // Green text for the exit button
     fontSize: 14,
   },
   centeredContent: {
@@ -61,33 +63,35 @@ const styles = StyleSheet.create({
   questionText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#F2FECA", // Light yellow text for question
     textAlign: "center",
     marginBottom: 10,
-    marginTop: 150
+    marginTop: 150,
   },
   input: {
     width: "100%",
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#98D083", // Green border for input field
     borderRadius: 8,
     padding: 10,
     fontSize: 16,
     color: "#333",
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#fff", // White background for input field
     minHeight: 100,
   },
   nextButton: {
     width: "30%",
-    backgroundColor: "#007AFF",
+    backgroundColor: "#fff", // White background for the next button
     paddingVertical: 12,
     borderRadius: 8,
     marginBottom: 50,
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#98D083", // Green border around the button
   },
   nextButtonText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#98D083", // Green text for the next button
   },
 });

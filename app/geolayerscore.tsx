@@ -27,10 +27,8 @@ const GeoLayerScore = () => {
 
   return (
     <View style={styles.container}>
-      {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
+
+    <Text style={styles.title}>Quake Puzzle</Text>
 
       <View style={styles.scoreContainer}>
         <Text style={styles.scoreText}>Your score is</Text>
@@ -52,73 +50,16 @@ const GeoLayerScore = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4A3333",
     alignItems: "center",
     justifyContent: "center",
-  },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
     position: "absolute",
     top: "10%",
-  },
-  dropZone: {
-    width: 200,
-    height: 200,
-    backgroundColor: "#ddd",
-    borderWidth: 2,
-    borderColor: "#aaa",
-    borderRadius: 10,
-    marginBottom: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  dropRow: {
-    flexDirection: "row",
-  },
-  dropSlot: {
-    width: 90,
-    height: 90,
-    backgroundColor: "#bbb",
-    margin: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#888",
-  },
-  filledSlot: {
-    backgroundColor: "#eee",
-  },
-  draggableItem: {
-    padding: 10,
-    marginBottom: 10,
-    alignItems: "center",
-  },
-  image: {
-    width: 80,
-    height: 80,
-    resizeMode: "contain",
-  },
-  checkButton: {
-    backgroundColor: "#007BFF",
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-    marginTop: 20,
   },
   scoreContainer: {
     alignItems: "center",
@@ -139,10 +80,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   goBackButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#133E87",
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 25,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
@@ -152,11 +93,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
-  },
-  checkText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
   },
 });
 

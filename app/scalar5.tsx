@@ -34,6 +34,7 @@ export default function Scalar() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.headerdesign}><Text style={styles.title}>Bio - Link</Text></View>
       {/* Back Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
@@ -70,8 +71,50 @@ export default function Scalar() {
 }
 
 const styles = StyleSheet.create({
+
+  exitButton: {
+    position: 'absolute' as const,
+    top: 20,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#205781',
+    borderRadius: 8, 
+  },
+
+  exitText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
+  },
+  
+  headerdesign:{
+    width: '100%',
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#205781',
+    paddingHorizontal: 90,
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    color: 'white',
+    textAlign: 'center' as const,
+    paddingHorizontal: 20,
+    flexShrink: 1,
+    flexWrap: 'wrap'
+  },
+
   container: {
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4F959D",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -92,19 +135,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 10,
   },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
-  },
+
   radioCircle: {
     width: 20,
     height: 20,
@@ -119,10 +150,11 @@ const styles = StyleSheet.create({
   radioText: {
     fontSize: 16,
     fontWeight: "500",
+    color: "#fff",
   },
   nextButton: {
     marginTop: 20,
-    backgroundColor: "#007bff",
+    backgroundColor: "#205781",
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 8,

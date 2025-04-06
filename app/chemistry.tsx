@@ -6,16 +6,18 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 const ChemistryScreen = () => {
   const router = useRouter();
 
-  const {ChemQuizPress} = useHandleClicks();
+  const {ChemQuizPress,handleMatterMatchPress1} = useHandleClicks();
   return (
     <View style={styles.container}>
+      {/* Title */}
+      <View style={styles.headerdesign}><Text style={styles.title}>Chemistry</Text></View>
+      
       {/* Exit Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
-      {/* Title */}
-      <Text style={styles.title}>Chemistry</Text>
+      
 
       {/* Science-themed images with slight rotations */}
       <Image source={require("../utils/pictures/1.png")} style={[styles.image, styles.topLeft]} />
@@ -28,6 +30,8 @@ const ChemistryScreen = () => {
       {/* Buttons */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={ChemQuizPress}><Text style={styles.buttonText}>Sci-Quiz</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleMatterMatchPress1}><Text style={styles.buttonText}>Matter-Match</Text></TouchableOpacity>
+
       </View>
     </View>
   );
@@ -36,28 +40,45 @@ const ChemistryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#C599B6",
     alignItems: "center",
     justifyContent: "center",
   },
   exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    padding: 10,
-    borderRadius: 10,
+    position: 'absolute' as const,
+    top: 20,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#E6B2BA',
+    borderRadius: 8, 
   },
   exitText: {
-    color: "#fff",
-    fontSize: 14,
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
   },
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#E6B2BA',
+    paddingHorizontal: 110,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
   title: {
-    fontSize: 35,
-    fontWeight: "bold",
-    color: "black",
-    position: "absolute",
-    top: "10%",
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
   },
   image: {
     width: 100,
@@ -102,7 +123,7 @@ const styles = StyleSheet.create({
   },
   
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "#E6B2BA",
     paddingVertical: 12,
     flex: 1, // Ensures equal button width
     alignItems: "center",

@@ -5,6 +5,7 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 import { useRouter } from "expo-router";
 const { width } = Dimensions.get("window"); // Get device width
 import useAchievements from "@/hooks/useAchievements";
+
 const wordList: string[] = ["FOCUS", "EPICENTER", "MAGNITUDE", "INTENSITY", "WAVE"];
 
 const puzzleGrid: string[][] = [
@@ -25,17 +26,16 @@ interface Cell {
 }
 
 const WordSearchPuzzle: React.FC = () => {
+  const { addAchievement } = useAchievements();
   const [selectedCells, setSelectedCells] = useState<Cell[]>([]);
   const [foundCells, setFoundCells] = useState<Cell[]>([]);
   const { wordPuzzleScore, setWordPuzzleScore } = useScore();
   const { handleGoBackPress } = useHandleClicks();
-  const {addAchievement} = useAchievements();
   const router = useRouter();
-  
 
   function handleSubmitPress() {
-    if(wordPuzzleScore === 0) return;
-    addAchievement("Eagle Eye")
+    if (wordPuzzleScore === 0) return;
+    addAchievement("Eagle Eye");
     handleGoBackPress();
   }
 
@@ -70,15 +70,14 @@ const WordSearchPuzzle: React.FC = () => {
 
   return (
     <View style={styles.container}>
-
-    <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
-    </TouchableOpacity>
+      </TouchableOpacity>
 
-    <Text style={styles.instructionText}>
-        Find the words. <Text style={{ fontWeight: "bold" }}>Wait 2 secs</Text> for selected letters to reset.
-    </Text>
-      
+      <Text style={styles.instructionText}>
+        Tap the letters to find the words. <Text style={{ fontWeight: "bold" }}>Wait 2 secs</Text> for selected letters to reset.
+      </Text>
+
       <Text style={styles.scoreText}>Score: {wordPuzzleScore}</Text>
       <View style={styles.gridContainer}>
         {puzzleGrid.map((row, rowIndex) => (
@@ -108,14 +107,14 @@ const styles = StyleSheet.create({
     flex: 1, // Takes full screen height
     width: "100%", // Takes full screen width
     alignItems: "center",
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4a3333", // Deep reddish brown background
     justifyContent: "center",
     paddingHorizontal: 10,
   },
   scoreText: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#f2feca", // Light cream text color
     marginBottom: 15,
   },
   gridContainer: {
@@ -132,20 +131,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 2,
-    backgroundColor: "#333",
+    backgroundColor: "#98d083", // Soft green background for the cells
     borderRadius: 5,
   },
   letter: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#fff", // White text color for the letters
   },
   selectedCell: {
-    backgroundColor: "#34C759", // Highlight only found words
+    backgroundColor: "#bcfcc9", // Light minty green background for selected cells
   },
   submitButton: {
     marginTop: 20,
-    backgroundColor: "#FF3B30",
+    backgroundColor: "#98d083", // Soft green background for the submit button
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 10,
@@ -160,27 +159,27 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "5%",
     left: "5%",
-    backgroundColor: "#000",
+    backgroundColor: "#f2feca", // Light cream for exit button
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 10,
   },
   exitText: {
-    color: "#fff",
+    color: "#4a3333", // Deep reddish brown text color for the exit button
     fontSize: 14,
   },
   instructionText: {
     fontSize: 16,
-    color: "#fff",
+    color: "#f2feca", // Light cream for instructions text
     textAlign: "center",
     marginBottom: 10,
     paddingHorizontal: 10,
   },
-  
+
   submitText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#fff", // White text color for submit button text
   },
 });
 

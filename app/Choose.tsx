@@ -9,11 +9,6 @@ const Choose = () => {
 
   return (
     <View style={styles.container}>
-      {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
-
       {/* Title */}
       <Text style={styles.title}>Sci-Nay</Text>
 
@@ -28,28 +23,23 @@ const Choose = () => {
       {/* Subject Buttons */}
       <View style={styles.buttonWrapper}>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={handleChemistryPress}>
+          <TouchableOpacity style={styles.ChemButton} onPress={handleChemistryPress}>
             <Text style={styles.buttonText}>Chemistry</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleBiologyPress}>
+          <TouchableOpacity style={styles.Biobutton} onPress={handleBiologyPress}>
             <Text style={styles.buttonText}>Biology</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={handlePhysicsPress}>
+          <TouchableOpacity style={styles.Phybutton} onPress={handlePhysicsPress}>
             <Text style={styles.buttonText}>Physics</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleEarthSciPress}>
+          <TouchableOpacity style={styles.Earthbutton} onPress={handleEarthSciPress}>
             <Text style={styles.buttonText}>Earth & Sci</Text>
           </TouchableOpacity>
         </View>
       </View>
-
-      {/* Achievements Button */}
-      <TouchableOpacity style={styles.achievementsButton} onPress={handleAchievementPress}>
-        <Text style={styles.buttonText}>Achievements</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -57,24 +47,12 @@ const Choose = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#133E87",
     alignItems: "center",
     justifyContent: "center",
   },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    padding: 10,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
-  },
   title: {
-    fontSize: 35,
+    fontSize: 50,
     fontWeight: "bold",
     color: "black",
     position: "absolute",
@@ -124,8 +102,32 @@ const styles = StyleSheet.create({
     width: "80%",
     marginBottom: 15, // Spacing between button rows
   },
-  button: {
-    backgroundColor: "#000",
+  ChemButton:{
+    backgroundColor: "#C599B6",
+    paddingVertical: 12,
+    flex: 1, // Ensures both buttons take equal width
+    alignItems: "center",
+    borderRadius: 20,
+    marginHorizontal: 5, // Adds spacing between buttons
+  },
+  Biobutton: {
+    backgroundColor: "#945034",
+    paddingVertical: 12,
+    flex: 1, // Ensures both buttons take equal width
+    alignItems: "center",
+    borderRadius: 20,
+    marginHorizontal: 5, // Adds spacing between buttons
+  },
+  Phybutton: {
+    backgroundColor: "#205781",
+    paddingVertical: 12,
+    flex: 1, // Ensures both buttons take equal width
+    alignItems: "center",
+    borderRadius: 20,
+    marginHorizontal: 5, // Adds spacing between buttons
+  },
+  Earthbutton: {
+    backgroundColor: "#4A3333",
     paddingVertical: 12,
     flex: 1, // Ensures both buttons take equal width
     alignItems: "center",
@@ -135,16 +137,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
-  },
-  achievementsButton: {
-    backgroundColor: "#000",
-    paddingVertical: 12,
-    width: "50%",
-    alignItems: "center",
-    borderRadius: 20,
-    marginTop: 20,
-  },
+    fontWeight: "bold"
+  }
 });
 
 export default Choose;

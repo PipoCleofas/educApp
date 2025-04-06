@@ -1,9 +1,28 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from "react-native";
 import { useRouter } from "expo-router";
+import { getAchievements } from "../database"; // Import the function
 
-const Achievements = () => {
+// Define Achievement type
+interface Achievement {
+  id: number;
+  achievement: string;
+}
+
+const Achievements: React.FC = () => {
   const router = useRouter();
+  const [achievements, setAchievements] = useState<Achievement[]>([]); // Enforce type
+
+  // Fetch achievements when the component loads
+  useEffect(() => {
+    fetchAchievements();
+  }, []);
+
+  const fetchAchievements = () => {
+    getAchievements((data: Achievement[]) => {
+      setAchievements(data); // Update the state with fetched achievements
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -13,9 +32,22 @@ const Achievements = () => {
       </TouchableOpacity>
 
       {/* Title */}
-      <Text style={styles.title}>Sci-Nay</Text>
+      <Text style={styles.title}>Achievements</Text>
 
-      {/* Science-themed images with rotation */}
+      {/* List of Achievements */}
+      {achievements.length > 0 ? (
+        <FlatList
+          data={achievements}
+          keyExtractor={(item) => item.id.toString()} // Ensure id is converted to string
+          renderItem={({ item }) => (
+            <Text style={styles.achievementText}>🏆 {item.achievement}</Text>
+          )}
+        />
+      ) : (
+        <Text style={styles.noAchievements}>No Achievements Yet!</Text>
+      )}
+
+      {/* Science-themed images */}
       <Image source={require("../utils/pictures/3.png")} style={[styles.image, styles.topLeft]} />
       <Image source={require("../utils/pictures/4.png")} style={[styles.image, styles.topRight]} />
       <Image source={require("../utils/pictures/1.png")} style={[styles.image, styles.bottomLeft]} />
@@ -33,37 +65,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonWrapper: {
-    width: "80%", // Ensure wrapper takes proper width
-    alignItems: "center",
-    marginTop: 20,
-  },
-  
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%", // Make sure buttons use full space
-    marginBottom: 15, // Adds spacing between rows
-  },
-  
-  button: {
-    backgroundColor: "#000",
-    paddingVertical: 12,
-    flex: 1, // Ensures equal button width
-    alignItems: "center",
-    borderRadius: 20,
-    marginHorizontal: 5, // Adds spacing between buttons
-  },
-  
-  achievementsButton: {
-    backgroundColor: "#000",
-    paddingVertical: 12,
-    width: "100%", // Same width as buttonContainer
-    alignItems: "center",
-    borderRadius: 20,
-    marginTop: 20,
-  },
-  
   exitButton: {
     position: "absolute",
     top: "5%",
@@ -79,9 +80,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "black",
-    position: "absolute",
-    top: "10%",
+    color: "white",
+    marginBottom: 20,
+  },
+  achievementText: {
+    fontSize: 18,
+    color: "#fff",
+    paddingVertical: 5,
+    textAlign: "center",
+  },
+  noAchievements: {
+    fontSize: 18,
+    color: "#fff",
+    marginTop: 20,
   },
   image: {
     width: 100,

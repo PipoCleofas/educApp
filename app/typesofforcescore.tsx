@@ -5,10 +5,12 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useAchievements from "@/hooks/useAchievements";
+
 const TypesofForce = () => {
   const router = useRouter();
+  const {addAchievement} = useAchievements()
+
   const { handleGoBackPress } = useHandleClicks();
-  const { addAchievement } = useAchievements();
   const { contactForceScore, setContactForceScore} = useScore(); // Ensure setter is available
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
@@ -69,11 +71,8 @@ const TypesofForce = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
 
-      <Text style={styles.title}>Physics</Text>
+      <Text style={styles.title}>Types of Force</Text>
 
       <View style={styles.scoreContainer}>
         <Text style={styles.scoreText}>Your score is</Text>
@@ -92,27 +91,14 @@ const TypesofForce = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#608BC1",
     alignItems: "center",
     justifyContent: "center",
-  },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
     position: "absolute",
     top: "10%",
   },
@@ -135,10 +121,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   goBackButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#133E87",
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 25,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,

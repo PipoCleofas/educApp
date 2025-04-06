@@ -97,13 +97,16 @@ const GeoLayer = () => {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
+        {/* Title */}
+        <View style={styles.headerdesign}><Text style={styles.title}>Quake Puzzle</Text></View>
+        
         {/* Exit Button */}
         <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
           <Text style={styles.exitText}>Back</Text>
         </TouchableOpacity>
 
-        {/* Title */}
-        <Text style={styles.title}>Tap the puzzle piece and tap the container to place pieces. Tap the container again to remove the piece.</Text>
+        {/* Instruction */}
+        <Text style={styles.description}>Tap the puzzle piece and tap the container to place pieces. Tap the container again to remove the piece.</Text>
 
         {/* Drop Zone */}
         <View style={styles.dropZone}>
@@ -194,41 +197,67 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#98D083",
     alignItems: "center",
-    paddingTop: 60, // Adjusted to avoid clipping
-    paddingBottom: 20,
+    paddingTop: 90, // Adjusted to avoid clipping
+    paddingBottom: 30,
   },
   exitButton: {
-    position: "absolute",
+    position: 'absolute' as const,
     top: 20,
-    left: 20,
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#4A3333',
+    borderRadius: 8, 
   },
   exitText: {
-    color: "#fff",
-    fontSize: 14,
-  },
-  title: {
+    color: '#fff',
     fontSize: 15,
-    fontWeight: "bold",
-    color: "black",
-    marginBottom: 20,
-    textAlign: "center",
+    fontWeight: '500' as const,
+  },
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#4A3333',
+    paddingHorizontal: 110,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
+  title: {
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
+  },
+
+  description:{
+    top: 0,
+    fontSize: 15,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
   },
   dropZone: {
-    width: 240,
-    height: 240,
+    width: 250,
+    height: 270,
     backgroundColor: "#ddd",
     borderWidth: 2,
     borderColor: "#aaa",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 10, // Increased for better visibility
+    marginBottom: 0, // Increased for better visibility
     padding: 10,
   },
   dropRow: {
@@ -280,7 +309,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   checkButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#98D083",
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,

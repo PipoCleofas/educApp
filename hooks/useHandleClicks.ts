@@ -55,6 +55,30 @@ const useHandleClicks = () => {
         router.push("/Choose");
     };
 
+    const handleOrganellesPress1 = () => {
+        router.push("/theorganelles2");
+    };
+
+    const handleOrganellesPress2 = () => {
+        router.push("/theorganelles3");
+    };
+
+    const handleOrganellesPress3 = () => {
+        router.push("/theorganelles4");
+    };
+
+    const handleOrganellesPress4 = () => {
+        router.push("/theorganelles5");
+    };
+
+    const handleOrganellesPress5 = () => {
+        router.push("/theorganellesscore");
+    };
+
+    const handleOrganellesPress = () => {
+        router.push("/theorganelles1");
+    };
+
     const handleAchievementPress = () => {
         router.push("/achievements");
     };
@@ -282,11 +306,94 @@ const useHandleClicks = () => {
 
 
 
+   
+    
+    const handleMatterMatchPress1 = () => {
+        router.push("/mattermatch1" as any);
+    };
+    
+    const handleMatterMatchPress2 = () => {
+        router.push("/mattermatch2" as any);
+    };
+    
+    const handleMatterMatchPress3 = () => {
+        router.push("/mattermatch3" as any);
+    };
+    
+    const handleMatterMatchPress4 = () => {
+        router.push("/mattermatch4" as any);
+    };
+    
+    const handleMatterMatchPress5 = () => {
+        router.push("/mattermatch5" as any);
+    };
+    
+    const handleMatterMatchPress6 = () => {
+        router.push("/mattermatch6" as any);
+    };
+    
+    const handleMatterMatchPress7 = () => {
+        router.push("/mattermatch7" as any);
+    };
+    
+    const handleMatterMatchPress8 = () => {
+        router.push("/mattermatch8" as any);
+    };
+    
+    const handleMatterMatchPress9 = () => {
+        router.push("/mattermatch9" as any);
+    };
+    
+    const handleMatterMatchPress10 = () => {
+        router.push("/mattermatch10" as any);
+    };
+    
+    const handleMatterMatchPress11 = () => {
+        router.push("/mattermatch11" as any);
+    };
+    
+    const handleMatterMatchPress12 = () => {
+        router.push("/mattermatch12" as any);
+    };
+    
+    const handleMatterMatchPress13 = () => {
+        router.push("/mattermatch13" as any);
+    };
+    
 
+    const handleMatterMatchPress14 = () => {
+        router.push("/mattermatch14" as any);
+    }
 
-
-
-
+    
+    
+    const handleMatterMatchPress15 = () => {
+        router.push("/mattermatch15" as any);
+    };
+    
+    const handleMatterMatchPress16 = () => {
+        router.push("/mattermatch16" as any);
+    };
+    
+    const handleMatterMatchPress17 = () => {
+        router.push("/mattermatch17" as any);
+    };
+    
+    const handleMatterMatchPress18 = () => {
+        router.push("/mattermatch18" as any);
+    };
+    
+    const handleMatterMatchPress19 = () => {
+        router.push("/mattermatch19" as any);
+    };
+    
+    const handleMatterMatchPress20 = () => {
+        router.push("/mattermatch20" as any);
+    };
+    
+    const handleMatterMatchPress21 = () => {
+        router.push("/mattermatchscore" as any);
+    };
 
     const handleGeoFirstPuzzlePress = async () => {
         await AsyncStorage.setItem('puzzleAnswer1', geoPuzzle1)
@@ -424,6 +531,35 @@ const useHandleClicks = () => {
         ChemQuizPress9,
         ChemQuizPress10,
         ChemQuizPress,
+        handleOrganellesPress,
+        handleOrganellesPress1,
+        handleOrganellesPress2,
+        handleOrganellesPress3,
+        handleOrganellesPress5,
+        handleOrganellesPress4,
+        handleMatterMatchPress1,
+        handleMatterMatchPress2,
+        handleMatterMatchPress3,
+        handleMatterMatchPress4,
+        handleMatterMatchPress5,
+        handleMatterMatchPress6,
+        handleMatterMatchPress7,
+        handleMatterMatchPress8,
+        handleMatterMatchPress9,
+        handleMatterMatchPress10,
+        handleMatterMatchPress11,
+        handleMatterMatchPress12,
+        handleMatterMatchPress13,
+        handleMatterMatchPress14,
+        handleMatterMatchPress15,
+        handleMatterMatchPress16,
+        handleMatterMatchPress17,
+        handleMatterMatchPress18,
+        handleMatterMatchPress19,
+        handleMatterMatchPress20,
+        handleMatterMatchPress21,
+
+
 
     };
 };

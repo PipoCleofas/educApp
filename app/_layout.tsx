@@ -84,6 +84,36 @@ export default function TabLayout() {
           <Stack.Screen name="chemmultiple10" options={{ headerShown: false }} />
           <Stack.Screen name="chemmultiplescore" options={{ headerShown: false }} />
 
+          <Stack.Screen name="theorganelles1" options={{ headerShown: false }} />
+          <Stack.Screen name="theorganelles2" options={{ headerShown: false }} />
+          <Stack.Screen name="theorganelles3" options={{ headerShown: false }} />
+          <Stack.Screen name="theorganelles4" options={{ headerShown: false }} />
+          <Stack.Screen name="theorganelles5" options={{ headerShown: false }} />
+          <Stack.Screen name="theorganellesscore" options={{ headerShown: false }} />
+          <Stack.Screen name="scalarscore" options={{ headerShown: false }} />
+
+          <Stack.Screen name="mattermatch1" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch2" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch3" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch4" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch5" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch6" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch7" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch8" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch9" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch10" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch11" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch12" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch13" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch14" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch15" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch16" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch17" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch18" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch19" options={{ headerShown: false }} />
+          <Stack.Screen name="mattermatch20" options={{ headerShown: false }} />
+
+          <Stack.Screen name="mattermatchscore" options={{ headerShown: false }} />
 
 
 

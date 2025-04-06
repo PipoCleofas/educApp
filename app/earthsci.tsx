@@ -8,13 +8,13 @@ const EarthScienceScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Title */}
+      <View style={styles.headerdesign}><Text style={styles.title}>Earth</Text></View>
+
       {/* Exit Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
-
-      {/* Title */}
-      <Text style={styles.title}>Earth Science</Text>
 
       {/* Science-themed images */}
       <Image source={require("../utils/pictures/3.png")} style={[styles.image, styles.topLeft]} />
@@ -26,10 +26,10 @@ const EarthScienceScreen = () => {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleWordPuzzlePress}><Text style={styles.buttonText}>Word Puzzle</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleGeoLayerPress}><Text style={styles.buttonText}>Geo Layers</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleGeoPuzzlePress}><Text style={styles.buttonText}>Geo Puzzles</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleQuakePreparePress}><Text style={styles.buttonText}>Quake Prepare</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleWordPuzzlePress}><Text style={styles.buttonText}>Geo Puzzle</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleGeoLayerPress}><Text style={styles.buttonText}>Quake Puzzle</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleGeoPuzzlePress}><Text style={styles.buttonText}>Geo Layers</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleQuakePreparePress}><Text style={styles.buttonText}>Disaster Alert</Text></TouchableOpacity>
       </View>
     </View>
   );
@@ -38,29 +38,45 @@ const EarthScienceScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#BCFCC9",
     alignItems: "center",
     justifyContent: "center",
   },
   exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    position: 'absolute' as const,
+    top: 20,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#4A3333',
+    borderRadius: 8, 
   },
   exitText: {
-    color: "#fff",
-    fontSize: 14,
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
   },
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#4A3333',
+    paddingHorizontal: 150,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
   title: {
-    fontSize: 35,
-    fontWeight: "bold",
-    color: "black",
-    position: "absolute",
-    top: "10%",
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
   },
   image: {
     width: 100,
@@ -103,7 +119,7 @@ const styles = StyleSheet.create({
     bottom: "20%",
   },
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "#4A3333",
     paddingVertical: 12,
     alignItems: "center",
     borderRadius: 20,

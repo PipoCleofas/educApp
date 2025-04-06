@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
-const Question10: React.FC = () => {
+const Question9: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
       const router = useRouter();
 
@@ -22,7 +22,7 @@ const Question10: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption10', selectedOption);
+      await AsyncStorage.setItem('selectedOption9', selectedOption);
       ChemQuizPress10()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
@@ -30,19 +30,18 @@ const Question10: React.FC = () => {
       console.error('Failed to save selected option:', error);
     }
   };
-
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-                      <Text style={styles.exitText}>Back</Text>
-              </TouchableOpacity>
+      <View style={styles.headerdesign}><Text style={styles.title}>Sci Quiz</Text></View>
+        <TouchableOpacity style={styles.exitButton1} onPress={() => router.back()}>
+                        <Text style={styles.exitText1}>Back</Text>
+                </TouchableOpacity>
       <View style={styles.quizBox}>
-        <Text style={styles.title}>CHEMISTRY QUIZ</Text>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What happens to blue litmus paper when dipped in vinegar?</Text>
+          <Text style={styles.questionText}>What happens to red litmus paper when dipped in a salt solution?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Turns green', 'B. Turns red', 'C. Turns yellow', 'D. No change in color'].map((option) => (
+          {['A. Turns blue', 'B. Turns green', 'C. Turns yellow', 'D. No change in color'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -53,10 +52,15 @@ const Question10: React.FC = () => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-          
-          <TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
-            <Text style={styles.navButtonText}>Submit</Text>
-          </TouchableOpacity>
+
+        <TouchableOpacity style={styles.exitButton2} onPress={() => router.back()}>
+					<Text style={styles.exitButtonText2}>Back</Text>
+				</TouchableOpacity>
+
+				<TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
+					<Text style={styles.navButtonText}>Next</Text>
+
+				</TouchableOpacity>
         </View>
       </View>
     </View>
@@ -64,31 +68,152 @@ const Question10: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  exitButton: {
-    position: "absolute",
+
+  
+  exitButton1: {
+    position: 'absolute' as const,
     top: 20,
-    left: 20,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    backgroundColor: "#000",
-    borderRadius: 6,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#E6B2BA',
+    borderRadius: 8, 
   },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
+
+  exitText1: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
   },
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4F4F4F' },
-  quizBox: { backgroundColor: 'white', padding: 20, borderRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, width: 320, alignItems: 'center' },
-  title: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
-  questionBox: { backgroundColor: '#007BFF', padding: 10, borderRadius: 10, marginBottom: 10 },
-  questionText: { color: 'white', textAlign: 'center' },
-  optionsContainer: { width: '100%' },
-  optionButton: { backgroundColor: 'white', padding: 10, marginVertical: 5, borderRadius: 10, borderWidth: 1, borderColor: '#ccc', alignItems: 'center' },
-  selectedOption: { backgroundColor: '#D6A2E8' },
-  optionText: { fontSize: 16 },
-  buttonContainer: { flexDirection: 'row', justifyContent: 'center', width: '100%', marginTop: 10 },
-  navButton: { backgroundColor: '#007BFF', padding: 10, borderRadius: 10, width: 100, alignItems: 'center' },
-  navButtonText: { color: 'white', fontWeight: 'bold' }
+
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#E6B2BA',
+    paddingHorizontal: 110,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
+  title: {
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
+  },
+
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FAD0C4',
+    paddingHorizontal: 16, 
+  },
+  
+  quizBox: {
+    backgroundColor: '#E6B2BA',
+    padding: 24,
+    top: 40,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 500
+  },
+
+  questionBox: {
+    backgroundColor: '#C599B6',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    width: '100%',
+  },
+  questionText: {
+    color: 'white',
+    fontSize: 16,
+    lineHeight: 22,
+    textAlign: 'left' as const,
+  },
+  questionNumber: {
+    fontWeight: 'bold' as const,
+  },
+
+  optionsContainer: {
+    width: '100%',
+    marginBottom: 8,
+  },
+  optionButton: {
+    backgroundColor: '#f8f9fa',
+    padding: 14,
+    marginVertical: 6,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    width: '100%',
+  },
+  optionText: {
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'left' as const,
+    paddingLeft: 8,
+  },
+  
+  selectedOption: {
+    backgroundColor: '#D6A2E8',
+    borderColor: '#D6A2E8',
+  },
+
+  buttonContainer: {
+    flexDirection: 'row' as const,
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 8,
+  },
+
+  exitButton2: {
+    backgroundColor: 'white',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    alignItems: 'center' as const,
+    justifyContent: 'center',
+    minWidth: 130,
+    minHeight: 40,
+  },
+
+  exitButtonText2: {
+    color: 'black',
+    fontWeight: 'bold' as const,
+    fontSize: 16,
+  },
+
+  navButton: {
+    backgroundColor: 'white',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center' as const,
+    justifyContent: 'center',
+    minWidth: 130,
+    minHeight: 40,
+  },
+  
+  navButtonText: {
+    color: 'black',
+    fontWeight: 'bold' as const,
+    fontSize: 16,
+  },
 });
 
-export default Question10;
+export default Question9;

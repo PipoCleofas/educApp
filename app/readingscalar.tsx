@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#4F959D",
   },
   content: {
     flex: 1,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   button: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#205781",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",

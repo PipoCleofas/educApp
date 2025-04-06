@@ -8,15 +8,14 @@ import useAchievements from "@/hooks/useAchievements";
 
 const PuzzleFifth = () => {
   const router = useRouter();
-  const { handleGoBackPress } = useHandleClicks();
   const { addAchievement } = useAchievements();
-
+  const { handleGoBackPress } = useHandleClicks();
   const { picsWordScore, setPicsWordScore } = useScore(); // Ensure setter is available
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
-  function goBack(){
-    addAchievement("Phy Picture")
-    handleGoBackPress()
+  function goBack() {
+    addAchievement("Phy Picture");
+    handleGoBackPress();
   }
 
   useEffect(() => {
@@ -28,15 +27,10 @@ const PuzzleFifth = () => {
         AsyncStorage.getItem("selectedQuantity1"),
         AsyncStorage.getItem("selectedQuantity2"),
         AsyncStorage.getItem("selectedQuantity3"),
-        
       ]);
 
       // Correct answers for comparison (assuming Scalar and Vector answers are correct)
-      const correctAnswers = [
-        "Force", 
-        "Push", 
-        "Pull", 
-      ];
+      const correctAnswers = ["Force", "Push", "Pull"];
 
       // Calculate the score by checking if the retrieved values match the correct answers
       puzzleAnswers.forEach((answer, index) => {
@@ -50,7 +44,6 @@ const PuzzleFifth = () => {
       await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
 
       // Set the final score state to display on the screen
-
       setFinalScore(newScore);
     }
 
@@ -82,27 +75,28 @@ const PuzzleFifth = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#205781", // Deep blue background
     alignItems: "center",
     justifyContent: "center",
+    padding: 20,
   },
   exitButton: {
     position: "absolute",
     top: "5%",
     left: "5%",
-    backgroundColor: "#000",
+    backgroundColor: "#98D2C0", // Light teal background for exit button
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 10,
   },
   exitText: {
-    color: "#fff",
+    color: "#F6F8D5", // Off-white text color for exit button
     fontSize: 14,
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "black",
+    color: "#F6F8D5", // Off-white text for the title
     position: "absolute",
     top: "10%",
   },
@@ -114,18 +108,18 @@ const styles = StyleSheet.create({
   scoreText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#FFD700",
+    color: "#FFD700", // Gold color for the score label
     textAlign: "center",
     marginBottom: 5,
   },
   scoreValue: {
     fontSize: 40,
     fontWeight: "bold",
-    color: "#00FF00",
+    color: "#00FF00", // Bright green for the score value
     textAlign: "center",
   },
   goBackButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#4F959D", // Lighter teal background for the button
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,
@@ -134,7 +128,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   goBackButtonText: {
-    color: "#fff",
+    color: "#F6F8D5", // Off-white text for the button
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",

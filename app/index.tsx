@@ -19,7 +19,7 @@ const Choose = () => {
 
       {/* Play Game Button */}
       <TouchableOpacity style={styles.button} onPress={handlePlayGamePress}>
-        <Text style={styles.buttonText}>Play Game</Text>
+        <Text style={styles.buttonText}>►   Play</Text>
       </TouchableOpacity>
     </View>
   );
@@ -28,12 +28,12 @@ const Choose = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#133E87",
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
-    fontSize: 35,
+    fontSize: 65,
     fontWeight: "bold",
     color: "black",
     position: "absolute",
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     transform: [{ rotate: "15deg" }],
   },
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "#608BC1",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,

@@ -41,7 +41,7 @@ export default function PicsWord() {
       <TextInput
         style={styles.textInput}
         placeholder="Enter your answer"
-        placeholderTextColor="#aaa"
+        placeholderTextColor="#98D2C0" // Placeholder color matching the new scheme
         onChangeText={(text) => setSelectedOption(text)}
       />
 
@@ -55,7 +55,7 @@ export default function PicsWord() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#205781", // Deep blue background
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -71,46 +71,46 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "5%",
     left: "5%",
-    backgroundColor: "#000",
+    backgroundColor: "#98D2C0", // Light teal background for exit button
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 10,
   },
   exitText: {
-    color: "#fff",
+    color: "#F6F8D5", // Off-white text color for exit button
     fontSize: 14,
   },
   hintText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#FFD700",
+    color: "#F6F8D5", // Off-white color for the hint text
     marginBottom: 10,
   },
   hintHighlight: {
-    color: "#FFA500",
+    color: "#F6F8D5", // Soft off-white color for the highlighted hint
   },
   textInput: {
     width: "80%",
     height: 50,
     borderWidth: 2,
-    borderColor: "#007bff",
+    borderColor: "#4F959D", // Lighter teal border color
     borderRadius: 10,
     paddingHorizontal: 15,
     fontSize: 16,
-    color: "#fff",
-    backgroundColor: "#333",
+    color: "#F6F8D5", // Off-white text color
+    backgroundColor: "#4F959D", // Light teal background for text input
     marginBottom: 20,
     textAlign: "center",
   },
   nextButton: {
     marginTop: 20,
-    backgroundColor: "#007bff",
+    backgroundColor: "#98D2C0", // Light teal background for next button
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 8,
   },
   nextButtonText: {
-    color: "#fff",
+    color: "#205781", // Deep blue text color for the next button
     fontSize: 16,
     fontWeight: "bold",
   },

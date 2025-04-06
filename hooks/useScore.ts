@@ -11,6 +11,8 @@ const useScore = () => {
     const [picsWordScore, setPicsWordScore] = useState<number | null>(0)
     const [oneToFifteenScore, setOneToFifteenScore] = useState<number | null>(0)
     const [chemQuizScore, setChemQuizScore] = useState<number | null>(0)
+    const [organelleScore, setOrganelleScore] = useState<number | null>(0)
+    const [matterMatchScore, setMatterMatchScore] = useState<number | null>(0)
 
     // geo puzzle
       // Use useState instead of useRef for reactive updates
@@ -48,6 +50,10 @@ const useScore = () => {
         setOneToFifteenScore,
         chemQuizScore,
         setChemQuizScore,
+        organelleScore,
+        setOrganelleScore,
+        matterMatchScore,
+        setMatterMatchScore,
     }
 }
 

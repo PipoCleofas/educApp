@@ -6,16 +6,16 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 const BiologyScreen = () => {
   const router = useRouter();
  
-  const {handleBioQuizPress} = useHandleClicks();
+  const {handleBioQuizPress,handleOrganellesPress} = useHandleClicks();
   return (
     <View style={styles.container}>
+      {/* Title */}
+      <View style={styles.headerdesign}><Text style={styles.title}>Biology</Text></View>
+      
       {/* Exit Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
-
-      {/* Title */}
-      <Text style={styles.title}>Biology</Text>
 
       {/* Biology-themed images */}
       <Image source={require("../utils/pictures/17.png")} style={[styles.image, styles.topLeft]} />
@@ -28,7 +28,9 @@ const BiologyScreen = () => {
         <TouchableOpacity style={styles.button} onPress={handleBioQuizPress}>
           <Text style={styles.buttonText}>Bio-quiz</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleOrganellesPress}>
+          <Text style={styles.buttonText}>The Organelles</Text>
+
         </TouchableOpacity>
       </View>
     </View>
@@ -38,29 +40,45 @@ const BiologyScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#FFDDAB",
     alignItems: "center",
     justifyContent: "center",
   },
   exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    position: 'absolute' as const,
+    top: 20,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 7,
+    height: 40,
+    width: 50,
+    backgroundColor: '#945034',
+    borderRadius: 8, 
   },
   exitText: {
-    color: "#fff",
-    fontSize: 14,
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
   },
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#945034',
+    paddingHorizontal: 130,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
   title: {
-    fontSize: 35,
-    fontWeight: "bold",
-    color: "black",
-    position: "absolute",
-    top: "10%",
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+    textAlign: 'center' as const,
   },
   image: {
     width: 100,
@@ -68,44 +86,54 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   topLeft: {
-    top: "18%",
+    top: "16%",
     left: "-1%",
     transform: [{ rotate: "-10deg" }],
   },
   topRight: {
-    top: "18%",
-    right: "-4%",
+    top: "16%",
+    right: "-1%",
     transform: [{ rotate: "10deg" }],
   },
-  
+  middleLeft: {
+    top: "60%",
+    left: "-1%",
+    transform: [{ rotate: "-8deg" }],
+  },
   middleRight: {
-    bottom: "8%",
-    right: "-1%",
+    top: "60%",
+    right: "-2%",
     transform: [{ rotate: "8deg" }],
   },
   bottomLeft: {
-    bottom: "8%",
-    left: "-3%",
+    bottom: "5%",
+    left: "10%",
     transform: [{ rotate: "-12deg" }],
   },
-  buttonContainer: {
-    width: "100%",
-    alignItems: "center",
-    position: "absolute",
-    bottom: "35%", // Moves buttons higher in the middle
+  bottomRight: {
+    bottom: "5%",
+    right: "10%",
+    transform: [{ rotate: "12deg" }],
   },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%",
+    marginTop: 20,
+  },
+  
   button: {
-    width: "60%", // Ensures equal width
-    backgroundColor: "#000",
-    paddingVertical: 15,
+    backgroundColor: "#5F8B4C",
+    paddingVertical: 12,
+    flex: 1, // Ensures equal button width
     alignItems: "center",
     borderRadius: 20,
-    marginVertical: 10, // Adds spacing between buttons
+    marginHorizontal: 5, // Adds spacing between buttons
   },
+  
   buttonText: {
     color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 14,
   },
 });
 
