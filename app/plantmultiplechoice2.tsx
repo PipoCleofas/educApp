@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -24,6 +24,7 @@ const Question2: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "B. Ribosome") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption2', selectedOption);
       handleBioQuizPress2()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question2: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which structure is responsible for protein synthesis in both plant and animal cells?</Text>
+          <Text style={styles.questionText}>2. Which structure is responsible for protein synthesis in both plant and animal cells?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Lysosome', 'B. Ribosome', 'C. Golgi apparatus', 'D. Smooth ER'].map((option) => (
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 25,
     paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     height: 40,
     width: 50,
     backgroundColor: '#945034',
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#945034',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -189,8 +190,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
 
   exitButtonText2: {
@@ -206,8 +207,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
   
   navButtonText: {

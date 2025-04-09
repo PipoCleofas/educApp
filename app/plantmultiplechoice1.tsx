@@ -22,6 +22,7 @@ const Question1: React.FC = () => {
     } 
 
     try {
+      if (selectedOption !== "B. Chloroplast") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption1', selectedOption);
       handleBioQuizPress1()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question1: React.FC = () => {
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
           <Text style={styles.questionText}>
-            Which of the following organelles is found in plant cells but not in animal cells?
+            1. Which of the following organelles is found in plant cells but not in animal cells?
           </Text>
         </View>
         <View style={styles.optionsContainer}>
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 25,
     paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     height: 40,
     width: 50,
     backgroundColor: '#945034',
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#945034',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -189,8 +190,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
 
   exitButtonText2: {
@@ -206,8 +207,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
   
   navButtonText: {

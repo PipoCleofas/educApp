@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -23,6 +23,7 @@ const Question12: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "A. Mitosis") Alert.alert("The correct answer is A.")
       await AsyncStorage.setItem('selectedOption12', selectedOption);
       handleBioQuizPress12()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question12: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What process do asexual organisms use to reproduce?</Text>
+          <Text style={styles.questionText}>12. What process do asexual organisms use to reproduce?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Mitosis', 'B. Meiosis', 'C. Fertilization', 'D. Osmosis'].map((option) => (

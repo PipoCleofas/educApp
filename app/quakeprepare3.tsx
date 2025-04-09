@@ -1,7 +1,7 @@
 import useHandleClicks from "@/hooks/useHandleClicks";
 import { Text, TextInput, View, StyleSheet, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
-import useAchievements from "@/hooks/useAchievements";
+import useAchievements from "@/hooks/useTrophy";
 
 export default function QuakePrepare() {
   const { handleGoBackPress } = useHandleClicks();

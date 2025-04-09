@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
 
-const Question4: React.FC = () => {
+const Question3: React.FC = () => {
       const router = useRouter();
     
   const [selectedOption, setSelectedOption] = useState<string>('');
 
-  const {handleBioQuizPress4} = useHandleClicks();
+  const {handleBioQuizPress3} = useHandleClicks();
 
   // Function to handle option selection (only updates state)
   const handleChange = (option: string) => {
@@ -23,8 +23,9 @@ const Question4: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption4', selectedOption);
-      handleBioQuizPress4()
+      if (selectedOption !== "B. Mitochondrion") Alert.alert("The correct answer is B.")
+      await AsyncStorage.setItem('selectedOption3', selectedOption);
+      handleBioQuizPress3()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
     } catch (error) {
@@ -39,12 +40,11 @@ const Question4: React.FC = () => {
                         <Text style={styles.exitText1}>Back</Text>
                 </TouchableOpacity>
       <View style={styles.quizBox}>
-        <Text style={styles.title}>BIOLOGY QUIZ</Text>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}> The primary lens in a compound microscope that is closest to the specimen and responsible for magnifying the image. </Text>
+          <Text style={styles.questionText}>3. What organelle is known as the powerhouse of the cell?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Objective Lens', 'B. Base', 'C. Stage', 'D. Illuminator'].map((option) => (
+          {['A. Nucleus', 'B. Mitochondrion', 'C. Chloroplast', 'D. Ribosome'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -55,12 +55,13 @@ const Question4: React.FC = () => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
+         
         <TouchableOpacity style={styles.exitButton2} onPress={() => router.back()}>
 					<Text style={styles.exitButtonText2}>Back</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
-					<Text style={styles.navButtonText}>Next</Text>
+					<Text style={styles.navButtonText}>Next</Text> 
 				</TouchableOpacity>
         </View>
       </View>
@@ -217,4 +218,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Question4;
+export default Question3;

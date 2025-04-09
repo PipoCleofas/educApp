@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -22,6 +22,7 @@ const Question6: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "A. Keeping the solution still") Alert.alert("The correct answer is A.")
       await AsyncStorage.setItem('selectedOption6', selectedOption);
       ChemQuizPress6()
       console.log('Saved option:', selectedOption);
@@ -39,7 +40,7 @@ const Question6: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which of the following will speed up the rate at which salt dissolves in water?</Text>
+          <Text style={styles.questionText}>6. Which of the following will speed up the rate at which salt dissolves in water?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Keeping the solution still', 'B. Using larger salt crystals', 'C. Stirring and heating the solution', 'D. Decreasing the temperature of the solution'].map((option) => (
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

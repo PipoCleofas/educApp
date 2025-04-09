@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -22,7 +22,8 @@ const Question6: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption6', selectedOption);
+      if (selectedOption !== "B. Vinegar") Alert.alert("The correct answer is B.")
+      await AsyncStorage.setItem('selectedOption7', selectedOption);
       ChemQuizPress7()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
@@ -39,10 +40,10 @@ const Question6: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which of the following will speed up the rate at which salt dissolves in water?</Text>
+          <Text style={styles.questionText}>7. Which among the following solutions are acid?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Keeping the solution still', 'B. Using larger salt crystals', 'C. Stirring and heating the solution', 'D. Decreasing the temperature of the solution'].map((option) => (
+          {['A. Soap', 'B. Vinegar', 'C. dishwashing liquid', 'D. baking soda'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -53,14 +54,14 @@ const Question6: React.FC = () => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-        
-          <TouchableOpacity style={styles.exitButton2} onPress={() => router.back()}>
-            <Text style={styles.exitButtonText2}>Back</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
-            <Text style={styles.navButtonText}>Next</Text>
-          </TouchableOpacity>
+         
+        <TouchableOpacity style={styles.exitButton2} onPress={() => router.back()}>
+					<Text style={styles.exitButtonText2}>Back</Text>
+				</TouchableOpacity>
+
+				<TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
+					<Text style={styles.navButtonText}>Next</Text>
+				</TouchableOpacity>
         </View>
       </View>
     </View>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

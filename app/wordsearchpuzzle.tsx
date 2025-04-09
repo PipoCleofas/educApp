@@ -4,7 +4,7 @@ import useScore from "@/hooks/useScore";
 import useHandleClicks from "@/hooks/useHandleClicks";
 import { useRouter } from "expo-router";
 const { width } = Dimensions.get("window"); // Get device width
-import useAchievements from "@/hooks/useAchievements";
+import useAchievements from "@/hooks/useTrophy";
 
 const wordList: string[] = ["FOCUS", "EPICENTER", "MAGNITUDE", "INTENSITY", "WAVE"];
 

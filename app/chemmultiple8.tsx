@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -22,6 +22,7 @@ const Question8: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "D. Soap") Alert.alert("The correct answer is D.")
       await AsyncStorage.setItem('selectedOption8', selectedOption);
       ChemQuizPress8()
       console.log('Saved option:', selectedOption);
@@ -39,7 +40,7 @@ const Question8: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which of the following solutions is basic?</Text>
+          <Text style={styles.questionText}>8. Which of the following solutions is basic?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Vinegar', 'B. Coffee', 'C. Lemon juice', 'D. Soap'].map((option) => (
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

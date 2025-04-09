@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,7 +23,8 @@ const Question11: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption2', selectedOption);
+      if (selectedOption !== "C. Gametes") Alert.alert("The correct answer is C.")
+      await AsyncStorage.setItem('selectedOption11', selectedOption);
       handleBioQuizPress11()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
@@ -40,7 +41,7 @@ const Question11: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>The haploid cells produced by animals during meiosis are:</Text>
+          <Text style={styles.questionText}>11. The haploid cells produced by animals during meiosis are:</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Spores', 'B. Zygotes', 'C. Gametes', 'D. Diploid'].map((option) => (

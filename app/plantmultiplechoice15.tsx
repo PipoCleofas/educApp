@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,6 +23,7 @@ const Question15: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "B. Food Web") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption15', selectedOption);
       handleBioQuizPress15()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question15: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What do you call an interaction of food chains?</Text>
+          <Text style={styles.questionText}>15. What do you call an interaction of food chains?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Food Pyramid', 'B. Food Web', 'C. Food Nutrients', 'D. Food Supplement'].map((option) => (

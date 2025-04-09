@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import DraggableFlatList from "react-native-draggable-flatlist";
-import useAchievements from "@/hooks/useAchievements";
+import useAchievements from "@/hooks/useTrophy";
 import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -74,10 +74,16 @@ const GeoLayer = () => {
   async function submit() {
     let score = 0;
   
-    if (placedImages.topLeft?.id === ".20") score += 2;
-    if (placedImages.topRight?.id === ".21") score += 2;
-    if (placedImages.bottomLeft?.id === ".22") score += 2;
-    if (placedImages.bottomRight?.id === ".23") score += 2;
+    if (placedImages.topLeft?.id === ".20") score += 2.5;
+    if (placedImages.topRight?.id === ".21") score += 2.5;
+    if (placedImages.bottomLeft?.id === ".22") score += 2.5;
+    if (placedImages.bottomRight?.id === ".23") score += 2.5;
+
+    if (placedImages.topLeft?.id !== ".20") score -= 1;
+    if (placedImages.topRight?.id !== ".21") score -= 1;
+    if (placedImages.bottomLeft?.id !== ".22") score -= 1;
+    if (placedImages.bottomRight?.id !== ".23") score -= 1;
+    if(score < 0) score = 0 
     
     await AsyncStorage.setItem('layerscore', score.toString())
     setGeoLayerScore(score); // Update the score
@@ -207,7 +213,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 25,
     paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     height: 40,
     width: 50,
     backgroundColor: '#4A3333',
@@ -222,7 +228,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#4A3333',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

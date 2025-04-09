@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -23,6 +23,7 @@ const Question9: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "C. Endocytosis") Alert.alert("The correct answer is C.")
       await AsyncStorage.setItem('selectedOption9', selectedOption);
       handleBioQuizPress9()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question9: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What is the process by which cells engulf and internalize substances from their surroundings?</Text>
+          <Text style={styles.questionText}>9. What is the process by which cells engulf and internalize substances from their surroundings?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Photosynthesis', 'B. Respiration', 'C. Endocytosis', 'D. Exocytosis'].map((option) => (

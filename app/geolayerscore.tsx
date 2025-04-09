@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
-import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const GeoLayerScore = () => {
@@ -31,7 +30,7 @@ const GeoLayerScore = () => {
     <Text style={styles.title}>Quake Puzzle</Text>
 
       <View style={styles.scoreContainer}>
-        <Text style={styles.scoreText}>Your score is</Text>
+        <Text style={styles.scoreText}>Trophy</Text>
         <Text style={styles.scoreValue}>
           {storedScore !== null ? storedScore : "Loading..."}
         </Text>

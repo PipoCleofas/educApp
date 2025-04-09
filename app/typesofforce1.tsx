@@ -13,6 +13,7 @@ export default function TypesofForce() {
   const handleNext = async () => {
     if (selectedOption) {
       try {
+        if (selectedOption !== "Contact Force") Alert.alert("The correct answer is Contact Force.")
         await AsyncStorage.setItem("selectedQuantity1", selectedOption);
         handleTypesOfForcwePress2(); // Navigate after saving
       } catch (error) {
@@ -32,31 +33,45 @@ export default function TypesofForce() {
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
+      <View style={styles.containerBox}>
+
       {/* Image */}
       <Image source={require("../utils/pictures/.28.jpg")} style={styles.image} />
 
+      <View style ={styles.background}>
       {/* Radio Buttons */}
       <View style={styles.radioGroup}>
         <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Contact Force")}>
           <View style={[styles.radioCircle, selectedOption === "Contact Force" && styles.selected]} />
           <Text style={styles.radioText}>Contact Force</Text>
         </TouchableOpacity>
-
+        
         <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Non-contact Force")}>
           <View style={[styles.radioCircle, selectedOption === "Non-contact Force" && styles.selected]} />
           <Text style={styles.radioText}>Non-contact Force</Text>
         </TouchableOpacity>
+      </View>
       </View>
 
       {/* Next Button */}
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+
+  background:{
+    top: "55%",
+    position: 'absolute' as const,
+    height: "25%",
+    width: "95%",
+    backgroundColor: '#205781',
+    borderRadius: 5, 
+  },
 
   exitButton: {
     position: 'absolute' as const,
@@ -100,7 +115,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "#4F959D",
+    backgroundColor: "#98D2C0",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -117,6 +132,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   radioButton: {
+    top: 10,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 10,
@@ -139,7 +155,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   nextButton: {
-    marginTop: 20,
+    top: "20%",
     backgroundColor: "#205781",
     paddingVertical: 12,
     paddingHorizontal: 40,
@@ -150,4 +166,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+
+  containerBox: {
+    backgroundColor: '#4F959D',
+    padding: 5,
+    top: 40,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 450,
+    alignItems: "center"
+  },
+
 });

@@ -7,6 +7,7 @@ export default function ReadingScalar() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.containerBox}>
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Instructions:</Text>
         <Text style={styles.text}>
@@ -53,6 +54,7 @@ export default function ReadingScalar() {
       <TouchableOpacity style={styles.button} onPress={handleNextBioPicsPress}>
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -61,13 +63,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#4F959D",
+    backgroundColor: "#205781",
   },
   content: {
     flex: 1,
   },
   title: {
-    fontSize: 18,
+    fontSize: 23,
     fontWeight: "bold",
     marginVertical: 10,
   },
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#205781",
+    width:"50%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -92,4 +95,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+  containerBox: {
+    backgroundColor: '#4F959D',
+    padding: 10,
+    top: 40,
+    borderRadius: 15,
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: "90%",
+    alignItems: "center"
+  }
+  
 });

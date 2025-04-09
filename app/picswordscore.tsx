@@ -4,18 +4,19 @@ import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
 import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useAchievements from "@/hooks/useAchievements";
+import useAchievements from "@/hooks/useTrophy";
 
 const PuzzleFifth = () => {
   const router = useRouter();
-  const { addAchievement } = useAchievements();
   const { handleGoBackPress } = useHandleClicks();
+  const { addAchievement } = useAchievements();
+
   const { picsWordScore, setPicsWordScore } = useScore(); // Ensure setter is available
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
-  function goBack() {
-    addAchievement("Phy Picture");
-    handleGoBackPress();
+  function goBack(){
+    addAchievement("Phy Picture")
+    handleGoBackPress()
   }
 
   useEffect(() => {
@@ -27,23 +28,36 @@ const PuzzleFifth = () => {
         AsyncStorage.getItem("selectedQuantity1"),
         AsyncStorage.getItem("selectedQuantity2"),
         AsyncStorage.getItem("selectedQuantity3"),
+        
       ]);
 
-      // Correct answers for comparison (assuming Scalar and Vector answers are correct)
-      const correctAnswers = ["Force", "Push", "Pull"];
+      // Correct answers for comparison (if the answers are correct)
+      const correctAnswers = [
+        "Force", 
+        "Push", 
+        "Pull",
+      ];
 
       // Calculate the score by checking if the retrieved values match the correct answers
       puzzleAnswers.forEach((answer, index) => {
         if (answer === correctAnswers[index]) {
-          newScore += 2; // Award 2 points for correct answer
+          newScore += 1; // Award 2 points for correct answer
         }
       });
 
+      puzzleAnswers.forEach((answer, index) => {
+        if (answer !== correctAnswers[index]) {
+          newScore -= 1; // Award 2 points for correct answer
+        }
+      });
+
+      if(newScore < 0) newScore = 0;
       // Update the scalar score and store the final score in AsyncStorage
       setPicsWordScore(newScore);
       await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
 
       // Set the final score state to display on the screen
+
       setFinalScore(newScore);
     }
 
@@ -52,14 +66,19 @@ const PuzzleFifth = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
 
-      <Text style={styles.title}>Physics</Text>
+      <Text style={styles.title}>4 pics 1 word</Text>
+      <View style={styles.rightAnswer}>
+        <Text style={styles.rightAnswerText}>The Correct Answer:</Text>
+        <Text style={styles.subLetter}>
+          1) Force{"\n"}{"\n"}   
+          2) Push{"\n"}{"\n"}
+          3) Pull{"\n"}{"\n"}            
+	</Text>
+      </View>
 
       <View style={styles.scoreContainer}>
-        <Text style={styles.scoreText}>Your score is</Text>
+        <Text style={styles.scoreText}>Trophy</Text>
         <Text style={styles.scoreValue}>
           {finalScore !== null ? finalScore : picsWordScore}
         </Text>
@@ -75,31 +94,43 @@ const PuzzleFifth = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#205781", // Deep blue background
+    backgroundColor: "#608BC1",
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
-  },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#98D2C0", // Light teal background for exit button
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#F6F8D5", // Off-white text color for exit button
-    fontSize: 14,
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "#F6F8D5", // Off-white text for the title
+    color: "white",
     position: "absolute",
-    top: "10%",
+    top: "5%",
   },
+  rightAnswer: {
+    backgroundColor: '#133E87',
+    padding: 24,
+    top: 40,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 500
+  },
+  rightAnswerText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+  },
+
+  subLetter:{
+    top: "5%",
+    color: 'white',
+    fontSize: 14,
+  },
+
   scoreContainer: {
     alignItems: "center",
     justifyContent: "center",
@@ -108,27 +139,28 @@ const styles = StyleSheet.create({
   scoreText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#FFD700", // Gold color for the score label
+    color: "#FFD700",
     textAlign: "center",
-    marginBottom: 5,
+    marginBottom: 10,
+    marginTop: "10%"
   },
   scoreValue: {
     fontSize: 40,
     fontWeight: "bold",
-    color: "#00FF00", // Bright green for the score value
+    color: "#00FF00",
     textAlign: "center",
   },
   goBackButton: {
-    backgroundColor: "#4F959D", // Lighter teal background for the button
+    backgroundColor: "#133E87",
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 25,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
   },
   goBackButtonText: {
-    color: "#F6F8D5", // Off-white text for the button
+    color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",

@@ -4,16 +4,15 @@ import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
 import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useAchievements from "@/hooks/useAchievements";
+import useAchievements from "@/hooks/useTrophy";
 
 const PuzzleFifth = () => {
   const router = useRouter();
-  const {addAchievement} = useAchievements()
-
   const { handleGoBackPress } = useHandleClicks();
   const { oneToFifteenScore, setOneToFifteenScore } = useScore(); // Ensure setter is available
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
+  const {addAchievement} = useAchievements();
   useEffect(() => {
     async function calculateFinalScore() {
       let newScore = 0;
@@ -56,14 +55,23 @@ const PuzzleFifth = () => {
         "A. Ecology",
         "B. Food Web"
       ];
-      
+      console.log("User answers:", puzzleAnswers);
+    console.log("Correct answers:", correctAnswers);
 
       // Calculate the score by checking if the retrieved values match the correct answers
       puzzleAnswers.forEach((answer, index) => {
         if (answer === correctAnswers[index]) {
-          newScore += 2; // Award 2 points for correct answer
+          newScore += 1; // Award 1 points for correct answer
         }
       });
+
+      puzzleAnswers.forEach((answer, index) => {
+        if (answer !== correctAnswers[index]) {
+          newScore -= 1; // Award -1 points for wrong answer
+        }
+      });
+
+      if (newScore < 0) newScore = 0
 
       // Update the scalar score and store the final score in AsyncStorage
       setOneToFifteenScore(newScore);
@@ -79,10 +87,30 @@ const PuzzleFifth = () => {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>BioQuiz</Text>
+      <Text style={styles.title}>Bio Quiz</Text>
+      <View style={styles.rightAnswer}>
+        <Text style={styles.rightAnswerText}>The Correct Answer:</Text>
+        <Text style={styles.subLetter}>
+          1) B. Chloroplast{"\n"}{"\n"}
+          2) B. Ribosome{"\n"}{"\n"}
+          3) B. Mitochondrion{"\n"}{"\n"}
+          4) A. Objective Lens{"\n"}{"\n"}
+          5) A. Providing structural support and protection.{"\n"}{"\n"}
+          6) B. Nucleus{"\n"}{"\n"}
+          7) A. Cytoplasm{"\n"}{"\n"}
+          8) A. Lysosome{"\n"}{"\n"}
+          9) C. Endocytosis{"\n"}{"\n"}
+          10) D. Arm{"\n"}{"\n"}
+          11) C. Gametes{"\n"}{"\n"}
+          12) A. Mitosis{"\n"}{"\n"}
+          13) C. Cell{"\n"}{"\n"}
+          14) A. Ecology{"\n"}{"\n"}
+          15) B. Food Web{"\n"}{"\n"}{"\n"}{"\n"}
+          </Text>
+      </View>
 
       <View style={styles.scoreContainer}>
-        <Text style={styles.scoreText}>Your score is</Text>
+        <Text style={styles.scoreText}>Trophy</Text>
         <Text style={styles.scoreValue}>
           {finalScore !== null ? finalScore : oneToFifteenScore}
         </Text>
@@ -107,8 +135,34 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     position: "absolute",
-    top: "10%",
+    top: "5%",
   },
+  rightAnswer: {
+    backgroundColor: '#133E87',
+    padding: 24,
+    top: 60,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 550
+  },
+  rightAnswerText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+  },
+
+  subLetter:{
+    top: "5%",
+    color: 'white',
+    fontSize: 14,
+  },
+
   scoreContainer: {
     alignItems: "center",
     justifyContent: "center",
@@ -119,7 +173,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFD700",
     textAlign: "center",
-    marginBottom: 5,
+    marginBottom: 10,
+    marginTop: "10%"
   },
   scoreValue: {
     fontSize: 40,

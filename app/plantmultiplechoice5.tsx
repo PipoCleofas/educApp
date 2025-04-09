@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,6 +23,7 @@ const Question5: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "A. Providing structural support and protection.") Alert.alert("The correct answer is A.")
       await AsyncStorage.setItem('selectedOption5', selectedOption);
       handleBioQuizPress5()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question5: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What is the main function of the cell wall in plant cells?</Text>
+          <Text style={styles.questionText}>5. What is the main function of the cell wall in plant cells?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Providing structural support and protection.', 'B. Carrying out photosynthesis.', 'C. Storing cellular waste.', 'D. Synthesizing proteins.'].map((option) => (

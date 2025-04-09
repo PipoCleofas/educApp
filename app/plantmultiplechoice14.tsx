@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,6 +23,7 @@ const Question14: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "A. Ecology") Alert.alert("The correct answer is A.")
       await AsyncStorage.setItem('selectedOption14', selectedOption);
       handleBioQuizPress14()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question14: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>The study of interactions between living organisms and their environment is known as ___________</Text>
+          <Text style={styles.questionText}>14. The study of interactions between living organisms and their environment is known as ___________</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Ecology', 'B. Biology', 'C. Genetics', 'D. Zoology'].map((option) => (

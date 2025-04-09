@@ -13,6 +13,7 @@ export default function PicsWord() {
   const handleNext = async () => {
     if (selectedOption) {
       try {
+        if (selectedOption !== "Push") Alert.alert("The correct answer is Push")
         await AsyncStorage.setItem("selectedQuantity2", selectedOption);
         handleNext4Pics1WordPress2(); // Navigate after saving
       } catch (error) {
@@ -25,23 +26,25 @@ export default function PicsWord() {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Back Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
+   <View style={styles.container}>
+         <View style={styles.headerdesign}><Text style={styles.title}>4 pics 1 word</Text></View>
+           <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+             <Text style={styles.exitText}>Back</Text>
+           </TouchableOpacity>
+
+           <View style={styles.containerBox}>
 
       {/* Hint */}
       <Text style={styles.hintText}>Hint: <Text style={styles.hintHighlight}>SHUP</Text></Text>
 
-      {/* Image */}
+      {/* Image */} 
       <Image source={require("../utils/pictures/.26.jpg")} style={styles.image} />
 
       {/* Text Input */}
       <TextInput
         style={styles.textInput}
         placeholder="Enter your answer"
-        placeholderTextColor="#98D2C0" // Placeholder color matching the new scheme
+        placeholderTextColor="#aaa"
         onChangeText={(text) => setSelectedOption(text)}
       />
 
@@ -49,18 +52,56 @@ export default function PicsWord() {
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#205781", // Deep blue background
+    backgroundColor: "#98D2C0",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
   },
+
+  headerdesign:{
+    position: 'absolute' as const,
+    top: 5,
+    backgroundColor: '#205781',
+    paddingHorizontal: 150,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+
+  title: {
+    top: 0,
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    marginBottom: 5,
+    color: 'white',
+    textAlign: 'center'
+  },
+  
+  containerBox: {
+    backgroundColor: '#4F959D',
+    padding: 5,
+    top: 40,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 450,
+    alignItems: "center"
+  },
+
   image: {
     width: 250,
     height: 250,
@@ -68,50 +109,55 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#98D2C0", // Light teal background for exit button
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
+    position: 'absolute' as const,
+    top: 25,
+    left: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    height: 40,
+    width: 50,
+    backgroundColor: '#205781',
+    borderRadius: 8, 
   },
+
   exitText: {
-    color: "#F6F8D5", // Off-white text color for exit button
-    fontSize: 14,
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500' as const,
   },
   hintText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#F6F8D5", // Off-white color for the hint text
-    marginBottom: 10,
+    color: "#FFD700",
+    marginTop: 10,
   },
   hintHighlight: {
-    color: "#F6F8D5", // Soft off-white color for the highlighted hint
+    color: "#FFA500",
   },
   textInput: {
     width: "80%",
     height: 50,
     borderWidth: 2,
-    borderColor: "#4F959D", // Lighter teal border color
+    borderColor: "#007bff",
     borderRadius: 10,
     paddingHorizontal: 15,
     fontSize: 16,
-    color: "#F6F8D5", // Off-white text color
-    backgroundColor: "#4F959D", // Light teal background for text input
+    color: "#fff",
+    backgroundColor: "#333",
     marginBottom: 20,
     textAlign: "center",
   },
   nextButton: {
-    marginTop: 20,
-    backgroundColor: "#98D2C0", // Light teal background for next button
-    paddingVertical: 12,
+    marginTop: 5,
+    backgroundColor: "#205781",
+    paddingVertical: 10,
     paddingHorizontal: 40,
     borderRadius: 8,
   },
   nextButtonText: {
-    color: "#205781", // Deep blue text color for the next button
+    color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
   },
+
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -22,6 +22,7 @@ const Question3: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "A. All samples must be tested exactly at the same time.") Alert.alert("The correct answer is A.")
       await AsyncStorage.setItem('selectedOption3', selectedOption);
       ChemQuizPress3()
       console.log('Saved option:', selectedOption);
@@ -39,7 +40,7 @@ const Question3: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Imagine that you performed an experiment in which you dissolved different samples of sugar (sugar cubes, extra fine sugar and regular table sugar) into water samples to compare how long they took to dissolve. What factor would be at least important to the design of this experiment?</Text>
+          <Text style={styles.questionText}>3. Imagine that you performed an experiment in which you dissolved different samples of sugar (sugar cubes, extra fine sugar and regular table sugar) into water samples to compare how long they took to dissolve. What factor would be at least important to the design of this experiment?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. All samples must be tested exactly at the same time.', 'B. The sugar samples must contain sugar and water only.', 'C. All water samples must have the same temperatures.', 'D. The same amount of sugar must be placed in each sample.'].map((option) => (
@@ -75,9 +76,9 @@ const styles = StyleSheet.create({
     top: 20,
     left: 25,
     paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     height: 40,
-    width: 50,
+    width: 60,
     backgroundColor: '#E6B2BA',
     borderRadius: 8, 
   },
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -188,8 +189,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
 
   exitButtonText2: {
@@ -205,8 +206,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
   
   navButtonText: {

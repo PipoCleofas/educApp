@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,6 +23,7 @@ const Question13: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "C. Cell") Alert.alert("The correct answer is C.")
       await AsyncStorage.setItem('selectedOption13', selectedOption);
       handleBioQuizPress13()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question13: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>The basic unit of life is</Text>
+          <Text style={styles.questionText}>13. The basic unit of life is</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Tissue', 'B. Organ', 'C. Cell', 'D. Water'].map((option) => (

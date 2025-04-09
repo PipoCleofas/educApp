@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
@@ -23,6 +23,7 @@ const Question3: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "B. Mitochondrion") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption3', selectedOption);
       handleBioQuizPress3()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question3: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What organelle is known as the powerhouse of the cell?</Text>
+          <Text style={styles.questionText}>3. What organelle is known as the powerhouse of the cell?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Nucleus', 'B. Mitochondrion', 'C. Chloroplast', 'D. Ribosome'].map((option) => (

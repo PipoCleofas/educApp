@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import useAchievements from "./useAchievements";
+import useAchievements from "./useTrophy";
 import useScore from "./useScore";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";

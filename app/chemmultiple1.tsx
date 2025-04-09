@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -22,6 +22,7 @@ const Question1: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "B. Particle size, temperature, stirring.") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption1', selectedOption);
       ChemQuizPress1()
       console.log('Saved option:', selectedOption);
@@ -30,6 +31,7 @@ const Question1: React.FC = () => {
       console.error('Failed to save selected option:', error);
     }
   };
+  
 
   return (
     <View style={styles.container}>
@@ -39,7 +41,7 @@ const Question1: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which process or processes affects the speed of dissolving?</Text>
+          <Text style={styles.questionText}>1. Which process or processes affects the speed of dissolving?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Stirring only', 'B. Particle size, temperature, stirring.', 'C. Particle size only', 'D. Type of container used'].map((option) => (
@@ -74,9 +76,9 @@ const styles = StyleSheet.create({
     top: 20,
     left: 25,
     paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     height: 40,
-    width: 50,
+    width: 60,
     backgroundColor: '#E6B2BA',
     borderRadius: 8, 
   },
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -187,8 +189,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
 
   exitButtonText2: {
@@ -204,8 +206,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center' as const,
     justifyContent: 'center',
-    minWidth: 130,
-    minHeight: 40,
+    minWidth: 150,
+    minHeight: 70,
   },
   
   navButtonText: {

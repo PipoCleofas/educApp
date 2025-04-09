@@ -13,6 +13,7 @@ export default function Scalar() {
   const handleNext = async () => {
     if (selectedOption) {
       try {
+        if (selectedOption !== "Scalar") Alert.alert("The correct answer is Scaler")
         await AsyncStorage.setItem("selectedQuantity", selectedOption);
         handleNextBioPicsPress2(); // Navigate after saving
       } catch (error) {
@@ -32,9 +33,11 @@ export default function Scalar() {
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
+      <View style={styles.containerBox}>
       {/* Image */}
       <Image source={require("../utils/pictures/.56.jpg")} style={styles.image} />
 
+      <View style ={styles.background}>
       {/* Radio Buttons */}
       <View style={styles.radioGroup}>
         <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Scalar")}>
@@ -46,17 +49,38 @@ export default function Scalar() {
           <View style={[styles.radioCircle, selectedOption === "Vector" && styles.selected]} />
           <Text style={styles.radioText}>Vector</Text>
         </TouchableOpacity>
+        </View>
       </View>
 
       {/* Next Button */}
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  containerBox: {
+    backgroundColor: '#4F959D',
+    padding: 5,
+    top: 10,
+    borderRadius: 16,
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 500,
+    alignItems: "center"
+  },
+  background:{
+    top: "60%",
+    position: 'absolute' as const,
+    height: "20%",
+    width: "95%",
+    backgroundColor: '#205781',
+    borderRadius: 5, 
+  },
 
   exitButton: {
     position: 'absolute' as const,
@@ -81,7 +105,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#205781',
-    paddingHorizontal: 90,
+    paddingHorizontal: 105,
     paddingVertical: 20,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -100,17 +124,19 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "#4F959D",
+    backgroundColor: "#98D2C0",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
   },
   image: {
+    top:"2%",
     width: 250,
     height: 250,
     resizeMode: "contain",
     marginBottom: 20,
+    borderRadius: 10,
   },
   radioGroup: {
     width: "100%",
@@ -139,7 +165,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   nextButton: {
-    marginTop: 20,
+    top: "30%",
     backgroundColor: "#205781",
     paddingVertical: 12,
     paddingHorizontal: 40,
@@ -150,4 +176,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
+
 });

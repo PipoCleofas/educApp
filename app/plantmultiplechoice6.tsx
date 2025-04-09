@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -23,6 +23,7 @@ const Question6: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "B. Nucleus") Alert.alert("The correct answer is B.")
       await AsyncStorage.setItem('selectedOption6', selectedOption);
       handleBioQuizPress6()
       console.log('Saved option:', selectedOption);
@@ -40,7 +41,7 @@ const Question6: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>Which organelle is responsible for storing genetic material (DNA)?</Text>
+          <Text style={styles.questionText}>6. Which organelle is responsible for storing genetic material (DNA)?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Mitochondria', 'B. Nucleus', 'C. Chloroplast', 'D. Ribosome'].map((option) => (

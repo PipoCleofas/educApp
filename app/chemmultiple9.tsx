@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
@@ -22,6 +22,7 @@ const Question9: React.FC = () => {
     }
 
     try {
+      if (selectedOption !== "D. No change in color") Alert.alert("The correct answer is D.")
       await AsyncStorage.setItem('selectedOption9', selectedOption);
       ChemQuizPress9()
       console.log('Saved option:', selectedOption);
@@ -38,7 +39,7 @@ const Question9: React.FC = () => {
                 </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What happens to red litmus paper when dipped in a salt solution?</Text>
+          <Text style={styles.questionText}>9. What happens to red litmus paper when dipped in a salt solution?</Text>
         </View>
         <View style={styles.optionsContainer}>
           {['A. Turns blue', 'B. Turns green', 'C. Turns yellow', 'D. No change in color'].map((option) => (
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

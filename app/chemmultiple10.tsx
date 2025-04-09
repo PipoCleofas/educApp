@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import useHandleClicks from '@/hooks/useHandleClicks';
 import { useRouter } from "expo-router";
 
-const Question9: React.FC = () => {
+const Question10: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
       const router = useRouter();
 
@@ -22,7 +22,8 @@ const Question9: React.FC = () => {
     }
 
     try {
-      await AsyncStorage.setItem('selectedOption9', selectedOption);
+      if (selectedOption !== "B. Turns red") Alert.alert("The correct answer is B.")
+      await AsyncStorage.setItem('selectedOption10', selectedOption);
       ChemQuizPress10()
       console.log('Saved option:', selectedOption);
       // Navigate to the next screen (if needed)
@@ -30,18 +31,19 @@ const Question9: React.FC = () => {
       console.error('Failed to save selected option:', error);
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerdesign}><Text style={styles.title}>Sci Quiz</Text></View>
         <TouchableOpacity style={styles.exitButton1} onPress={() => router.back()}>
-                        <Text style={styles.exitText1}>Back</Text>
-                </TouchableOpacity>
+          <Text style={styles.exitText1}>Back</Text>
+        </TouchableOpacity>
       <View style={styles.quizBox}>
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>What happens to red litmus paper when dipped in a salt solution?</Text>
+          <Text style={styles.questionText}>10. What happens to blue litmus paper when dipped in vinegar?</Text>
         </View>
         <View style={styles.optionsContainer}>
-          {['A. Turns blue', 'B. Turns green', 'C. Turns yellow', 'D. No change in color'].map((option) => (
+          {['A. Turns green', 'B. Turns red', 'C. Turns yellow', 'D. No change in color'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
@@ -52,14 +54,13 @@ const Question9: React.FC = () => {
           ))}
         </View>
         <View style={styles.buttonContainer}>
-
+          
         <TouchableOpacity style={styles.exitButton2} onPress={() => router.back()}>
 					<Text style={styles.exitButtonText2}>Back</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity style={styles.navButton} onPress={handleNextPress}>
 					<Text style={styles.navButtonText}>Next</Text>
-
 				</TouchableOpacity>
         </View>
       </View>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -216,4 +217,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Question9;
+export default Question10;
