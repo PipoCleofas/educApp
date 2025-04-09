@@ -1,134 +1,170 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useRef, useEffect } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Animated, SafeAreaView, StatusBar } from "react-native";
 import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
-const EarthScienceScreen = () => {
+
+const BiologyScreen = () => {
   const router = useRouter();
-  const {handleGeoPuzzlePress, handleGeoLayerPress,handleWordPuzzlePress,handleQuakePreparePress} = useHandleClicks();
+  const { handleBioQuizPress, handleOrganellesPress } = useHandleClicks();
+  
+  const bioQuizAnim = useRef(new Animated.Value(0)).current;
+  const organellesAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const createFloatingAnimation = (animValue:any, delay:any) => {
+      return Animated.loop(
+        Animated.sequence([
+          Animated.timing(animValue, {
+            toValue: -5,
+            duration: 1500,
+            delay: delay,
+            useNativeDriver: true,
+          }),
+          Animated.timing(animValue, {
+            toValue: 0, 
+            duration: 1500,
+            useNativeDriver: true,
+          })
+        ])
+      );
+    };
+
+    // Start animations with staggered delays
+    const bioQuizAnimation = createFloatingAnimation(bioQuizAnim, 0);
+    const organellesAnimation = createFloatingAnimation(organellesAnim, 300);
+
+    bioQuizAnimation.start();
+    organellesAnimation.start();
+
+    return () => {
+      // Clean up animations
+      bioQuizAnimation.stop();
+      organellesAnimation.stop();
+    };
+  }, []);
 
   return (
-    <View style={styles.container}>
-      {/* Title */}
-      <View style={styles.headerdesign}><Text style={styles.title}>Earth</Text></View>
-
-      {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
-
-      {/* Science-themed images */}
-      <Image source={require("../utils/pictures/3.png")} style={[styles.image, styles.topLeft]} />
-      <Image source={require("../utils/pictures/4.png")} style={[styles.image, styles.topRight]} />
-      <Image source={require("../utils/pictures/1.png")} style={[styles.image, styles.middleLeft]} />
-      <Image source={require("../utils/pictures/2.png")} style={[styles.image, styles.middleRight]} />
-      <Image source={require("../utils/pictures/5.png")} style={[styles.image, styles.bottomLeft]} />
-      <Image source={require("../utils/pictures/6.png")} style={[styles.image, styles.bottomRight]} />
-
-      {/* Buttons */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleWordPuzzlePress}><Text style={styles.buttonText}>Geo Puzzle</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleGeoLayerPress}><Text style={styles.buttonText}>Quake Puzzle</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleGeoPuzzlePress}><Text style={styles.buttonText}>Geo Layers</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleQuakePreparePress}><Text style={styles.buttonText}>Disaster Alert</Text></TouchableOpacity>
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="#8B4513" barStyle="light-content" />
+      
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.menuButton} onPress={() => router.back()}>
+          <Text style={styles.menuIcon}>☰</Text>
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Biology</Text>
       </View>
-    </View>
+
+      {/* Main Content Area */}
+      <View style={styles.contentContainer}>
+        {/* BioQuiz Button */}
+        <Animated.View style={{
+          transform: [{ translateY: bioQuizAnim }],
+          marginVertical: 10,
+          width: "100%"
+        }}>
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleBioQuizPress}
+          >
+            <View style={styles.buttonIndicator}></View>
+            <Text style={styles.buttonText}>BioQuiz</Text>
+            <View style={styles.iconContainer}>
+              <Text style={styles.buttonIcon}>🌱</Text>
+            </View>
+          </TouchableOpacity>
+        </Animated.View>
+
+        {/* The Organelles Button */}
+        <Animated.View style={{
+          transform: [{ translateY: organellesAnim }],
+          marginVertical: 10,
+          width: "100%"
+        }}>
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleOrganellesPress}
+          >
+            <View style={styles.buttonIndicator}></View>
+            <Text style={styles.buttonText}>The Organelles</Text>
+            <View style={styles.iconContainer}>
+              <Text style={styles.buttonIcon}>🧫</Text>
+            </View>
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#BCFCC9",
+    backgroundColor: "#FFDAB5", // Peachy background
+  },
+  header: {
+    backgroundColor: "#8B4513", // Brown header
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  menuButton: {
+    marginRight: 15,
+  },
+  menuIcon: {
+    fontSize: 22,
+    color: "#FFFFFF",
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#FFFFFF",
+    textAlign: "center",
+  },
+  contentContainer: {
+    flex: 1,
+    padding: 15,
     alignItems: "center",
     justifyContent: "center",
-  },
-  exitButton: {
-    position: 'absolute' as const,
-    top: 20,
-    left: 25,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-    height: 40,
-    width: 50,
-    backgroundColor: '#4A3333',
-    borderRadius: 8, 
-  },
-  exitText: {
-    color: '#fff',
-    fontSize: 15,
-    fontWeight: '500' as const,
-  },
-  headerdesign:{
-    position: 'absolute' as const,
-    top: 5,
-    backgroundColor: '#4A3333',
-    paddingHorizontal: 150,
-    paddingVertical: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    transform: [{ scale: 1.2 }],
-  },
-
-  title: {
-    top: 0,
-    fontSize: 22,
-    fontWeight: 'bold' as const,
-    marginTop: 10,
-    marginBottom: 10,
-    color: 'white',
-    textAlign: 'center' as const,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    position: "absolute",
-  },
-  topLeft: {
-    top: "18%",
-    left: "-1%",
-    transform: [{ rotate: "-10deg" }],
-  },
-  topRight: {
-    top: "18%",
-    right: "-3%",
-    transform: [{ rotate: "10deg" }],
-  },
-  middleLeft: {
-    top: "40%",
-    left: "-1%",
-    transform: [{ rotate: "-8deg" }],
-  },
-  middleRight: {
-    top: "40%",
-    right: "-1%",
-    transform: [{ rotate: "8deg" }],
-  },
-  bottomLeft: {
-    bottom: "8%",
-    left: "-3%",
-    transform: [{ rotate: "-12deg" }],
-  },
-  bottomRight: {
-    bottom: "8%",
-    right: "-1%",
-    transform: [{ rotate: "12deg" }],
-  },
-  buttonContainer: {
-    width: "80%",
-    position: "absolute",
-    bottom: "20%",
+    backgroundColor: "#FFE4C4", // Lighter peach for the content area
+    margin: 20,
+    borderRadius: 20,
   },
   button: {
-    backgroundColor: "#4A3333",
-    paddingVertical: 12,
+    backgroundColor: "#5F8B4C", // Green button color
+    borderRadius: 25,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginVertical: 8,
+    flexDirection: "row",
     alignItems: "center",
-    borderRadius: 20,
-    marginVertical: 10, // Adds spacing between buttons
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
+  },
+  buttonIndicator: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF", // White circle
+    marginRight: 15,
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 14,
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "500",
+    flex: 1,
+  },
+  iconContainer: {
+    marginLeft: 10,
+  },
+  buttonIcon: {
+    fontSize: 22,
   },
 });
 
-export default EarthScienceScreen;
+export default BiologyScreen;
