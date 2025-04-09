@@ -1,144 +1,190 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
+import { LinearGradient } from 'expo-linear-gradient';
 import useHandleClicks from "../hooks/useHandleClicks";
 
 const Choose = () => {
-  const { handleAchievementPress, handleChemistryPress, handleBiologyPress, handlePhysicsPress, handleEarthSciPress } = useHandleClicks();
+  const { handleChemistryPress, handleBiologyPress, handlePhysicsPress, handleEarthSciPress } = useHandleClicks();
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
-      {/* Title */}
-      <Text style={styles.title}>Sci-Nay</Text>
+    <SafeAreaView style={styles.container}>
+      {/* Gradient Background */}
+      <LinearGradient
+        colors={['#a9c1e8', '#7995d1', '#3964ad']}
+        style={styles.background}
+        locations={[0, 0.5, 1]}
+      />
 
-      {/* Science-themed images */}
-      <Image source={require("../utils/pictures/3.png")} style={[styles.image, styles.topLeft]} />
-      <Image source={require("../utils/pictures/4.png")} style={[styles.image, styles.topRight]} />
-      <Image source={require("../utils/pictures/1.png")} style={[styles.image, styles.bottomLeft]} />
-      <Image source={require("../utils/pictures/2.png")} style={[styles.image, styles.bottomRight]} />
-      <Image source={require("../utils/pictures/5.png")} style={[styles.image, styles.middleLeft]} />
-      <Image source={require("../utils/pictures/6.png")} style={[styles.image, styles.middleRight]} />
+      {/* Header Section */}
+      <View style={styles.headerContainer}>
+        <View style={styles.titleSection}>
+          <Text style={styles.title}>Sci Nay</Text>
+          <Text style={styles.subtitle}>Good morning</Text>
+        </View>
+        <Image 
+          source={require("../utils/pictures/2.png")} 
+          style={styles.profileImage}
+        />
+      </View>
 
       {/* Subject Buttons */}
-      <View style={styles.buttonWrapper}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.ChemButton} onPress={handleChemistryPress}>
-            <Text style={styles.buttonText}>Chemistry</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.Biobutton} onPress={handleBiologyPress}>
-            <Text style={styles.buttonText}>Biology</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.buttonContainer}>
+        {/* Chemistry Button */}
+        <TouchableOpacity 
+          style={[styles.subjectButton, styles.chemistryButton]}
+          onPress={handleChemistryPress}
+        >
+          <View style={[styles.radioButton, styles.chemistryRadio]} />
+          <Text style={styles.buttonText}>Chemistry</Text>
+          <Image 
+            source={require("../utils/pictures/3.png")} 
+            style={styles.buttonIcon}
+          />
+        </TouchableOpacity>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.Phybutton} onPress={handlePhysicsPress}>
-            <Text style={styles.buttonText}>Physics</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.Earthbutton} onPress={handleEarthSciPress}>
-            <Text style={styles.buttonText}>Earth & Sci</Text>
-          </TouchableOpacity>
-        </View>
+        {/* Biology Button */}
+        <TouchableOpacity 
+          style={[styles.subjectButton, styles.biologyButton]}
+          onPress={handleBiologyPress}
+        >
+          <View style={[styles.radioButton, styles.biologyRadio]} />
+          <Text style={styles.buttonText}>Biology</Text>
+          <Image 
+            source={require("../utils/pictures/5.png")} 
+            style={styles.buttonIcon}
+          />
+        </TouchableOpacity>
+
+        {/* Physics Button */}
+        <TouchableOpacity 
+          style={[styles.subjectButton, styles.physicsButton]}
+          onPress={handlePhysicsPress}
+        >
+          <View style={[styles.radioButton, styles.physicsRadio]} />
+          <Text style={styles.buttonText}>Physics</Text>
+          <Image 
+            source={require("../utils/pictures/1.png")} 
+            style={styles.buttonIcon}
+          />
+        </TouchableOpacity>
+
+        {/* Earth and Science Button */}
+        <TouchableOpacity 
+          style={[styles.subjectButton, styles.earthButton]}
+          onPress={handleEarthSciPress}
+        >
+          <View style={[styles.radioButton, styles.earthRadio]} />
+          <Text style={styles.buttonText}>Earth and Science</Text>
+          <Image 
+            source={require("../utils/pictures/4.png")} 
+            style={styles.buttonIcon}
+          />
+        </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#133E87",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    marginBottom: 40,
+  },
+  titleSection: {
+    flex: 1,
   },
   title: {
-    fontSize: 50,
-    fontWeight: "bold",
-    color: "black",
-    position: "absolute",
-    top: "10%",
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#000',
   },
-  image: {
-    width: 100,
-    height: 100,
-    position: "absolute",
+  subtitle: {
+    fontSize: 16,
+    color: '#333',
+    marginTop: 5,
   },
-  topLeft: {
-    top: "16%",
-    left: "-1%",
-    transform: [{ rotate: "-10deg" }],
-  },
-  topRight: {
-    top: "16%",
-    right: "-1%",
-    transform: [{ rotate: "10deg" }],
-  },
-  middleLeft: {
-    top: "55%",
-    left: "-2%",
-    transform: [{ rotate: "-8deg" }],
-  },
-  middleRight: {
-    top: "55%",
-    right: "-3%",
-    transform: [{ rotate: "8deg" }],
-  },
-  bottomLeft: {
-    bottom: "5%",
-    left: "-2%",
-    transform: [{ rotate: "-12deg" }],
-  },
-  bottomRight: {
-    bottom: "5%",
-    right: "-2%",
-    transform: [{ rotate: "12deg" }],
-  },
-  buttonWrapper: {
-    marginTop: 20,
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "80%",
-    marginBottom: 15, // Spacing between button rows
+    paddingHorizontal: 20,
+    marginTop: 20,
   },
-  ChemButton:{
-    backgroundColor: "#C599B6",
-    paddingVertical: 12,
-    flex: 1, // Ensures both buttons take equal width
-    alignItems: "center",
-    borderRadius: 20,
-    marginHorizontal: 5, // Adds spacing between buttons
+  subjectButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 25,
+    padding: 15,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  Biobutton: {
-    backgroundColor: "#945034",
-    paddingVertical: 12,
-    flex: 1, // Ensures both buttons take equal width
-    alignItems: "center",
-    borderRadius: 20,
-    marginHorizontal: 5, // Adds spacing between buttons
-  },
-  Phybutton: {
-    backgroundColor: "#205781",
-    paddingVertical: 12,
-    flex: 1, // Ensures both buttons take equal width
-    alignItems: "center",
-    borderRadius: 20,
-    marginHorizontal: 5, // Adds spacing between buttons
-  },
-  Earthbutton: {
-    backgroundColor: "#4A3333",
-    paddingVertical: 12,
-    flex: 1, // Ensures both buttons take equal width
-    alignItems: "center",
-    borderRadius: 20,
-    marginHorizontal: 5, // Adds spacing between buttons
+  radioButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    marginRight: 15,
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold"
-  }
+    flex: 1,
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#fff',
+  },
+  buttonIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+  },
+  // Chemistry specific styles
+  chemistryButton: {
+    backgroundColor: '#E27396', // Pink
+  },
+  chemistryRadio: {
+    backgroundColor: '#FFB6C1',
+  },
+  // Biology specific styles
+  biologyButton: {
+    backgroundColor: '#A0522D', // Brown
+  },
+  biologyRadio: {
+    backgroundColor: '#FFDAB9',
+  },
+  // Physics specific styles
+  physicsButton: {
+    backgroundColor: '#4CAF50', // Green
+  },
+  physicsRadio: {
+    backgroundColor: '#8FBC8F',
+  },
+  // Earth and Science specific styles
+  earthButton: {
+    backgroundColor: '#536878', // Slate blue
+  },
+  earthRadio: {
+    backgroundColor: '#A9A9A9',
+  },
 });
 
 export default Choose;
