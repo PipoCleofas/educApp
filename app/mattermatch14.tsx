@@ -6,15 +6,17 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 
 export default function Scalar() {
   const router = useRouter();
-  const { handleNextBioPicsPress2 } = useHandleClicks();
+  const { handleMatterMatchPress15 } = useHandleClicks();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   // Function to handle next button press
   const handleNext = async () => {
     if (selectedOption) {
       try {
-        await AsyncStorage.setItem("selectedQuantity", selectedOption);
-        handleNextBioPicsPress2(); // Navigate after saving
+        console.log("Question 14 - selectedOption before saving:", selectedOption); // ADD THIS LINE
+        if (selectedOption !== "Gas") Alert.alert("The correct answer is Gas.")
+        await AsyncStorage.setItem("selectedQuantity14", selectedOption);
+        handleMatterMatchPress15(); // Navigate after saving
       } catch (error) {
         console.error("Error saving selection:", error);
         Alert.alert("Error", "Failed to save selection.");
@@ -26,24 +28,33 @@ export default function Scalar() {
 
   return (
     <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.headerDesign}>
+      <Text style={styles.headerText}>Match Matter</Text>
+      </View>
       {/* Back Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
-
+      <View style={styles.background}>
       {/* Image */}
-      <Image source={require("../utils/pictures/gold.jpg")} style={styles.image} />
+      <Image source={require("../utils/pictures/matchmatter/gas/air.png")} style={styles.image} />
 
       {/* Radio Buttons */}
       <View style={styles.radioGroup}>
-        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Scalar")}>
-          <View style={[styles.radioCircle, selectedOption === "Scalar" && styles.selected]} />
-          <Text style={styles.radioText}>Pure</Text>
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Solid")}>
+          <View style={[styles.radioCircle, selectedOption === "Solid" && styles.selected]} />
+          <Text style={styles.radioText}>Solid</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Vector")}>
-          <View style={[styles.radioCircle, selectedOption === "Vector" && styles.selected]} />
-          <Text style={styles.radioText}>Mixture</Text>
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Liquid")}>
+          <View style={[styles.radioCircle, selectedOption === "Liquid" && styles.selected]} />
+          <Text style={styles.radioText}>Liquid</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Gas")}>
+          <View style={[styles.radioCircle, selectedOption === "Gas" && styles.selected]} />
+          <Text style={styles.radioText}>Gas</Text>
         </TouchableOpacity>
       </View>
 
@@ -51,23 +62,47 @@ export default function Scalar() {
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
+  headerDesign: {
+    position: 'absolute',
+    top: 5,
+    backgroundColor: '#E6B2BA',
+    paddingHorizontal: 140,
+    paddingVertical: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+  headerText: {
+    color: "white"
+  },
+  background:{
+    backgroundColor: "#C599B6",
+    borderRadius: 16,
+    padding: 5,
+    alignItems: "center",
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 550
+  },
   container: {
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#FFF7F3", // light pastel background
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
   },
   image: {
-    width: 250,
     height: 250,
     resizeMode: "contain",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   radioGroup: {
     width: "100%",
@@ -77,46 +112,60 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 10,
-  },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    backgroundColor: "#FAD0C4", // soft highlight
     borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
+    width: "80%",
+    justifyContent: "flex-start",
+    shadowColor: "#C599B6",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 3,
   },
   radioCircle: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     borderWidth: 2,
-    borderColor: "#007bff",
-    marginRight: 10,
+    borderColor: "#C599B6",
+    marginRight: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
   selected: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#C599B6",
   },
   radioText: {
     fontSize: 16,
-    fontWeight: "500",
-    color: "#fff",
+    fontWeight: "600",
+    color: "#4F4F4F",
   },
   nextButton: {
-    marginTop: 20,
-    backgroundColor: "#007bff",
-    paddingVertical: 12,
-    paddingHorizontal: 40,
-    borderRadius: 8,
+    marginTop: 15,
+    backgroundColor: "#E6B2BA",
+    paddingVertical: 14,
+    paddingHorizontal: 50,
+    borderRadius: 10,
+    shadowColor: "#C599B6",
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
   },
   nextButtonText: {
-    color: "#fff",
+    color: "#4F4F4F",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  exitButton: {
+    position: "absolute",
+    top: 20,
+    left: 30,
+    backgroundColor: "#E6B2BA",
+  },
+  exitText: {
+    color: "#FFF7F3",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });

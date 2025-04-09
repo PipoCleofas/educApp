@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     backgroundColor: '#4F959D',
-    paddingHorizontal: 110,
+    paddingHorizontal: 140,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

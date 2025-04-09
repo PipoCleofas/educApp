@@ -28,7 +28,7 @@ const PuzzleFifth = () => {
         AsyncStorage.getItem("selectedQuantity9"),
         AsyncStorage.getItem("selectedQuantity10"),
       ]);
-
+      console.log("User Answers:", puzzleAnswers);
       // Correct answers for comparison (assuming Scalar and Vector answers are correct)
       const correctAnswers = [
         "CELL WALL", 
@@ -42,13 +42,22 @@ const PuzzleFifth = () => {
         "VACUOLE", 
         "ENDOPLASMIC RETICULUM"
       ];
+      console.log("Correct Answers:", correctAnswers);
 
       // Calculate the score by checking if the retrieved values match the correct answers
       puzzleAnswers.forEach((answer, index) => {
         if (answer === correctAnswers[index]) {
-          newScore += 2; // Award 2 points for correct answer
+          newScore += 1; // Award 1 points for correct answer
         }
       });
+
+      puzzleAnswers.forEach((answer, index) => {
+        if (answer !== correctAnswers[index]) {
+          newScore -= 1; // Award -1 points for wrong answer
+        }
+      });
+
+      if (newScore < 0) newScore = 0
 
       // Update the scalar score and store the final score in AsyncStorage
       setOrganelleScore(newScore);
@@ -63,11 +72,26 @@ const PuzzleFifth = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
-        <Text style={styles.exitText}>Back</Text>
-      </TouchableOpacity>
 
-      <Text style={styles.title}>Physics</Text>
+      <Text style={styles.title}>The Organelles</Text>
+            <View style={styles.rightAnswer}>
+              <Text style={styles.rightAnswerText}>The Correct Answer:</Text>
+              <Text style={styles.subLetter}>
+                1) CELL WALL{"\n"}{"\n"} 
+                2) RIBOSOMES{"\n"}{"\n"}
+                3) RIBOSOMES{"\n"}{"\n"}
+                4) MITOCHONDRIA{"\n"}{"\n"}
+                5) CHLOROPLAST{"\n"}{"\n"}
+                6) CYTOPLASM{"\n"}{"\n"}
+                7) GOLGI APPARATUS{"\n"}{"\n"}
+                8) CELL MEMBRANE{"\n"}{"\n"}
+                9) VACUOLE{"\n"}{"\n"}
+                10) ENDOPLASMIC RETICULUME{"\n"}{"\n"}
+                </Text>
+            </View>
+      
+
+      
 
       <View style={styles.scoreContainer}>
         <Text style={styles.scoreText}>Your score is</Text>
@@ -86,30 +110,43 @@ const PuzzleFifth = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#608BC1",
     alignItems: "center",
     justifyContent: "center",
-  },
-  exitButton: {
-    position: "absolute",
-    top: "5%",
-    left: "5%",
-    backgroundColor: "#000",
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-  },
-  exitText: {
-    color: "#fff",
-    fontSize: 14,
   },
   title: {
     fontSize: 35,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
     position: "absolute",
-    top: "10%",
+    top: "5%",
   },
+  rightAnswer: {
+    backgroundColor: '#133E87',
+    padding: 24,
+    top: 60,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 400
+  },
+  rightAnswerText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+  },
+
+  subLetter:{
+    top: "5%",
+    color: 'white',
+    fontSize: 14,
+  },
+
   scoreContainer: {
     alignItems: "center",
     justifyContent: "center",
@@ -120,7 +157,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFD700",
     textAlign: "center",
-    marginBottom: 5,
+    marginBottom: 10,
+    marginTop: "10%"
   },
   scoreValue: {
     fontSize: 40,
@@ -129,10 +167,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   goBackButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#133E87",
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 25,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,

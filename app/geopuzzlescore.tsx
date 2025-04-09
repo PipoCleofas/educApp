@@ -54,7 +54,7 @@ const PuzzleFifth = () => {
       <Text style={styles.title}>Earth Science</Text>
 
       <View style={styles.scoreContainer}>
-        <Text style={styles.scoreText}>Your score is</Text>
+        <Text style={styles.scoreText}>Trophy</Text>
         <Text style={styles.scoreValue}>
           {finalScore !== null ? finalScore : geoPuzzleScore}
         </Text>

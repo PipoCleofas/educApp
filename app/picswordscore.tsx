@@ -41,13 +41,13 @@ const PuzzleFifth = () => {
       // Calculate the score by checking if the retrieved values match the correct answers
       puzzleAnswers.forEach((answer, index) => {
         if (answer === correctAnswers[index]) {
-          newScore += 1; // Award 2 points for correct answer
+          newScore += 1; // Award 1 points for correct answer
         }
       });
 
       puzzleAnswers.forEach((answer, index) => {
         if (answer !== correctAnswers[index]) {
-          newScore -= 1; // Award 2 points for correct answer
+          newScore -= 1; // Award -1 points for wrong answer
         }
       });
 
@@ -74,7 +74,7 @@ const PuzzleFifth = () => {
           1) Force{"\n"}{"\n"}   
           2) Push{"\n"}{"\n"}
           3) Pull{"\n"}{"\n"}            
-	</Text>
+	      </Text>
       </View>
 
       <View style={styles.scoreContainer}>

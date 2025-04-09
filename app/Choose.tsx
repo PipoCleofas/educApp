@@ -59,9 +59,7 @@ const Choose = () => {
 
         {/* Physics Button */}
         <TouchableOpacity 
-          style={[styles.subjectButton, styles.physicsButton]}
-          onPress={handlePhysicsPress}
-        >
+          style={[styles.subjectButton, styles.physicsButton]}onPress={handlePhysicsPress}>
           <View style={[styles.radioButton, styles.physicsRadio]} />
           <Text style={styles.buttonText}>Physics</Text>
           <Image 
@@ -72,9 +70,7 @@ const Choose = () => {
 
         {/* Earth and Science Button */}
         <TouchableOpacity 
-          style={[styles.subjectButton, styles.earthButton]}
-          onPress={handleEarthSciPress}
-        >
+          style={[styles.subjectButton, styles.earthButton]}onPress={handleEarthSciPress}>
           <View style={[styles.radioButton, styles.earthRadio]} />
           <Text style={styles.buttonText}>Earth and Science</Text>
           <Image 

@@ -13,6 +13,7 @@ export default function Scalar() {
   const handleNext = async () => {
     if (selectedOption) {
       try {
+        if (selectedOption !== "Liquid") Alert.alert("The correct answer is Liquid.")
         await AsyncStorage.setItem("selectedQuantity19", selectedOption);
         handleMatterMatchPress20(); // Navigate after saving
       } catch (error) {
@@ -26,95 +27,113 @@ export default function Scalar() {
 
   return (
     <View style={styles.container}>
+
+      {/* Header */}
+      <View style={styles.headerDesign}>
+      <Text style={styles.headerText}>Match Matter</Text>
+      </View>
+
       {/* Back Button */}
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
+      <View style={styles.background}>
+
       {/* Image */}
-      <Image source={require("../utils/pictures/milk.jpg")} style={styles.image} />
+      <Image source={require("../utils/pictures/matchmatter/liquid/tea.png")} style={styles.image} />
 
       {/* Radio Buttons */}
-      <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Solid")}>
-        <View style={[styles.radioCircle, selectedOption === "Solid" && styles.selected]} />
-        <Text style={styles.radioText}>Solid</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Liquid")}>
-        <View style={[styles.radioCircle, selectedOption === "Liquid" && styles.selected]} />
-        <Text style={styles.radioText}>Liquid</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Gas")}>
-        <View style={[styles.radioCircle, selectedOption === "Gas" && styles.selected]} />
-        <Text style={styles.radioText}>Gas</Text>
-      </TouchableOpacity>
+      <View style={styles.radioGroup}>
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Solid")}>
+          <View style={[styles.radioCircle, selectedOption === "Solid" && styles.selected]} />
+          <Text style={styles.radioText}>Solid</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Liquid")}>
+          <View style={[styles.radioCircle, selectedOption === "Liquid" && styles.selected]} />
+          <Text style={styles.radioText}>Liquid</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Gas")}>
+          <View style={[styles.radioCircle, selectedOption === "Gas" && styles.selected]} />
+          <Text style={styles.radioText}>Gas</Text>
+        </TouchableOpacity>
+      </View>
 
       {/* Next Button */}
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  headerDesign: {
+    position: 'absolute',
+    top: 5,
+    backgroundColor: '#E6B2BA',
+    paddingHorizontal: 140,
+    paddingVertical: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ scale: 1.2 }],
+  },
+  headerText: {
+    color: "white"
+  },
+  background:{
+    backgroundColor: "#C599B6",
+    borderRadius: 16,
+    padding: 5,
+    alignItems: "center",
+    width: '100%',
+    maxWidth: 400,
+    height: '100%',
+    maxHeight: 550
+  },
   container: {
-    backgroundColor: "#FFF7F3", // Changed to match the previous design
+    backgroundColor: "#FFF7F3", // light pastel background
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
   },
   image: {
-    width: 250,
     height: 250,
     resizeMode: "contain",
-    marginBottom: 30,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
+    marginBottom: 10,
   },
-  exitButton: {
-    position: "absolute",
-    top: 40,
-    left: 20,
-    backgroundColor: "#C599B6",  // Updated for consistency with the previous design
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-  },
-  exitText: {
-    color: "#FFF7F3",  // Updated text color to match design
-    fontSize: 14,
-    fontWeight: "600",
+  radioGroup: {
+    width: "100%",
+    alignItems: "center",
   },
   radioButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FAD0C4", // Updated to match previous button style
-    padding: 12,
-    marginVertical: 8,
-    borderRadius: 16,
+    marginVertical: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    backgroundColor: "#FAD0C4", // soft highlight
+    borderRadius: 10,
     width: "80%",
+    justifyContent: "flex-start",
     shadowColor: "#C599B6",
-    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 6,
+    elevation: 3,
   },
   radioCircle: {
     width: 24,
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: "#C599B6",  // Consistent with previous design
+    borderColor: "#C599B6",
     marginRight: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
   selected: {
     backgroundColor: "#C599B6",
@@ -122,22 +141,33 @@ const styles = StyleSheet.create({
   radioText: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#4F4F4F",  // Text color matches the design style
+    color: "#4F4F4F",
   },
   nextButton: {
-    marginTop: 30,
-    backgroundColor: "#E6B2BA",  // Consistent background color
+    marginTop: 15,
+    backgroundColor: "#E6B2BA",
     paddingVertical: 14,
     paddingHorizontal: 50,
     borderRadius: 10,
     shadowColor: "#C599B6",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
   },
   nextButtonText: {
-    color: "#4F4F4F",  // Matching text color with design
+    color: "#4F4F4F",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  exitButton: {
+    position: "absolute",
+    top: 20,
+    left: 30,
+    backgroundColor: "#E6B2BA",
+  },
+  exitText: {
+    color: "#FFF7F3",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });

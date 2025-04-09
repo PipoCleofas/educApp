@@ -6,7 +6,7 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 
 export default function TypesofForce() {
   const router = useRouter();
-  const { handleTypesOfForcwePress3 } = useHandleClicks();
+  const { handleTypesOfForcwePress4 } = useHandleClicks();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   // Function to handle next button press
@@ -14,8 +14,8 @@ export default function TypesofForce() {
     if (selectedOption) {
       try {
         if (selectedOption !== "Non-contact Force") Alert.alert("The correct answer is Non-contact Force.")
-        await AsyncStorage.setItem("selectedQuantity2", selectedOption);
-        handleTypesOfForcwePress3(); // Navigate after saving
+        await AsyncStorage.setItem("selectedQuantity3", selectedOption);
+        handleTypesOfForcwePress4(); // Navigate after saving
       } catch (error) {
         console.error("Error saving selection:", error);
         Alert.alert("Error", "Failed to save selection.");
@@ -32,13 +32,12 @@ export default function TypesofForce() {
       <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
-
       <View style={styles.containerBox}>
-
       {/* Image */}
-      <Image source={require("../utils/pictures/.29.jpg")} style={styles.image} />
+      <Image source={require("../utils/pictures/.30.jpg")} style={styles.image} />
 
       <View style ={styles.background}>
+
       {/* Radio Buttons */}
       <View style={styles.radioGroup}>
         <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Contact Force")}>

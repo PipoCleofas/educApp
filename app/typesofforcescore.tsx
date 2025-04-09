@@ -5,7 +5,6 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 import useScore from "@/hooks/useScore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useAchievements from "@/hooks/useTrophy";
-
 const TypesofForce = () => {
   const router = useRouter();
   const { handleGoBackPress } = useHandleClicks();

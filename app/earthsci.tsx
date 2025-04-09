@@ -5,10 +5,12 @@ import useHandleClicks from "@/hooks/useHandleClicks";
 
 const BiologyScreen = () => {
   const router = useRouter();
-  const { handleBioQuizPress, handleOrganellesPress } = useHandleClicks();
+  const { handleGeoPuzzlePress, handleGeoLayerPress,handleWordPuzzlePress,handleQuakePreparePress } = useHandleClicks();
   
-  const bioQuizAnim = useRef(new Animated.Value(0)).current;
-  const organellesAnim = useRef(new Animated.Value(0)).current;
+  const geopuzzleAnim = useRef(new Animated.Value(0)).current;
+  const quakepuzzleAnim = useRef(new Animated.Value(0)).current;
+  const geolayerAnim = useRef(new Animated.Value(0)).current;
+  const disasterAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const createFloatingAnimation = (animValue:any, delay:any) => {
@@ -30,16 +32,23 @@ const BiologyScreen = () => {
     };
 
     // Start animations with staggered delays
-    const bioQuizAnimation = createFloatingAnimation(bioQuizAnim, 0);
-    const organellesAnimation = createFloatingAnimation(organellesAnim, 300);
+    const GeoPuzzlAnimation = createFloatingAnimation(geopuzzleAnim, 0);
+    const QuakePuzzleAnimation = createFloatingAnimation(quakepuzzleAnim, 300);
+    const GeoLayerAnimation = createFloatingAnimation(geolayerAnim, 0);
+    const DisasterAnimation = createFloatingAnimation(disasterAnim, 300);
 
-    bioQuizAnimation.start();
-    organellesAnimation.start();
 
-    return () => {
+    GeoPuzzlAnimation.start();
+    QuakePuzzleAnimation.start();
+    GeoLayerAnimation.start();
+    DisasterAnimation.start();
+
+    return () => {``
       // Clean up animations
-      bioQuizAnimation.stop();
-      organellesAnimation.stop();
+      GeoPuzzlAnimation.stop();
+      QuakePuzzleAnimation.stop();
+      GeoLayerAnimation.stop();
+      DisasterAnimation.stop();
     };
   }, []);
 
@@ -50,47 +59,82 @@ const BiologyScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.menuButton} onPress={() => router.back()}>
-          <Text style={styles.menuIcon}>☰</Text>
+          <Text style={styles.menuIcon}>back</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Biology</Text>
+        <Text style={styles.headerTitle}>Earth and Science</Text>
       </View>
 
       {/* Main Content Area */}
       <View style={styles.contentContainer}>
-        {/* BioQuiz Button */}
+        {/* Earth and Science Button */}
         <Animated.View style={{
-          transform: [{ translateY: bioQuizAnim }],
+          transform: [{ translateY: geopuzzleAnim }],
           marginVertical: 10,
           width: "100%"
         }}>
           <TouchableOpacity 
             style={styles.button} 
-            onPress={handleBioQuizPress}
+            onPress={handleWordPuzzlePress}
           >
             <View style={styles.buttonIndicator}></View>
-            <Text style={styles.buttonText}>BioQuiz</Text>
+            <Text style={styles.buttonText}>Geo Puzzle</Text>
             <View style={styles.iconContainer}>
-              <Text style={styles.buttonIcon}>🌱</Text>
+              <Text style={styles.buttonIcon}>🧩</Text>
             </View>
           </TouchableOpacity>
         </Animated.View>
 
         {/* The Organelles Button */}
         <Animated.View style={{
-          transform: [{ translateY: organellesAnim }],
+          transform: [{ translateY: quakepuzzleAnim }],
           marginVertical: 10,
           width: "100%"
         }}>
           <TouchableOpacity 
             style={styles.button} 
-            onPress={handleOrganellesPress}
+            onPress={handleGeoLayerPress}
           >
             <View style={styles.buttonIndicator}></View>
-            <Text style={styles.buttonText}>The Organelles</Text>
+            <Text style={styles.buttonText}>Quake Puzzle</Text>
             <View style={styles.iconContainer}>
-              <Text style={styles.buttonIcon}>🧫</Text>
+              <Text style={styles.buttonIcon}>🏠</Text>
             </View>
           </TouchableOpacity>
+          {/* BioQuiz Button */}
+        <Animated.View style={{
+          transform: [{ translateY: geolayerAnim }],
+          marginVertical: 10,
+          width: "100%"
+        }}>
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleGeoPuzzlePress}
+          >
+            <View style={styles.buttonIndicator}></View>
+            <Text style={styles.buttonText}>Geo Layer</Text>
+            <View style={styles.iconContainer}>
+              <Text style={styles.buttonIcon}>🌍</Text>
+            </View>
+          </TouchableOpacity>
+        </Animated.View>
+
+        {/* BioQuiz Button */}
+        <Animated.View style={{
+          transform: [{ translateY: disasterAnim }],
+          marginVertical: 10,
+          width: "100%"
+        }}>
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleQuakePreparePress}
+          >
+            <View style={styles.buttonIndicator}></View>
+            <Text style={styles.buttonText}>Disaster Alert</Text>
+            <View style={styles.iconContainer}>
+              <Text style={styles.buttonIcon}>⚠️</Text>
+            </View>
+          </TouchableOpacity>
+        </Animated.View>
         </Animated.View>
       </View>
     </SafeAreaView>
@@ -100,7 +144,7 @@ const BiologyScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFDAB5", // Peachy background
+    backgroundColor: "#98D083", // Peachy background
   },
   header: {
     backgroundColor: "#8B4513", // Brown header
@@ -113,7 +157,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   menuIcon: {
-    fontSize: 22,
+    fontSize: 15,
     color: "#FFFFFF",
   },
   headerTitle: {

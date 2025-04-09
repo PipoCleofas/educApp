@@ -96,19 +96,7 @@ const ChemistryScreen = () => {
           </TouchableOpacity>
         </Animated.View>
 
-        {/* Elements Button */}
-        <Animated.View style={{
-          transform: [{ translateY: elementsAnim }],
-          marginVertical: 10,
-          width: "100%"
-        }}>
-          <TouchableOpacity
-            style={styles.buttonItem}>
-            <View style={styles.greenCircle}></View>
-            <Text style={styles.buttonText}>Elements</Text>
-            <Text style={styles.iconText}>⚛️</Text>
-          </TouchableOpacity>
-        </Animated.View>
+        
       </View>
     </View>
   );
@@ -123,7 +111,7 @@ const styles = StyleSheet.create({
   },
   exitButton: {
     position: 'absolute',
-    top: 20,
+    top: 10,
     left: 25,
     paddingVertical: 8,
     paddingHorizontal: 8,
@@ -141,7 +129,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     backgroundColor: '#E6B2BA',
-    paddingHorizontal: 110,
+    paddingHorizontal: 130,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
