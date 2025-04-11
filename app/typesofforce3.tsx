@@ -29,7 +29,7 @@ export default function TypesofForce() {
     <View style={styles.container}>
       <View style={styles.headerdesign}><Text style={styles.title}>Types of Force</Text></View>
       {/* Back Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/physics")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
       <View style={styles.containerBox}>

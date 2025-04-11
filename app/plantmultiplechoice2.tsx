@@ -36,7 +36,7 @@ const Question2: React.FC = () => {
 
   return (
     <View style={styles.container}><View style={styles.headerdesign}><Text style={styles.title}>BioQuiz</Text></View>
-        <TouchableOpacity style={styles.exitButton1} onPress={() => router.back()}>
+        <TouchableOpacity style={styles.exitButton1} onPress={() => router.push("/biology")}>
                         <Text style={styles.exitText1}>Back</Text>
                 </TouchableOpacity>
       <View style={styles.quizBox}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
 import useScore from "@/hooks/useScore";
@@ -22,46 +22,51 @@ const PuzzleFifth = () => {
   useEffect(() => {
     async function calculateFinalScore() {
       let newScore = 0;
-
-      // Retrieve the alternating Scalar/Vector values from AsyncStorage
+  
+      // Retrieve answers from AsyncStorage
       const puzzleAnswers = await Promise.all([
         AsyncStorage.getItem("selectedQuantity1"),
         AsyncStorage.getItem("selectedQuantity2"),
         AsyncStorage.getItem("selectedQuantity3"),
-        
       ]);
-
-      // Correct answers for comparison (if the answers are correct)
+  
+      // Correct answers (case doesn't matter)
       const correctAnswers = [
         "Force", 
         "Push", 
         "Pull",
       ];
-
-      // Calculate the score by checking if the retrieved values match the correct answers
+  
+      // Calculate score with case-insensitive comparison
       puzzleAnswers.forEach((answer, index) => {
-        if (answer === correctAnswers[index]) {
-          newScore += 1; // Award 1 points for correct answer
+        const userAnswer = answer?.trim().toLowerCase();
+        const correctAnswer = correctAnswers[index]?.trim().toLowerCase();
+        
+        if (userAnswer === correctAnswer) {
+          newScore += 1; // +1 for correct answer
+        } else {
+          newScore -= 1; // -1 for wrong answer
+          // Show alert with correct answer (case-insensitive)
+          if (userAnswer && userAnswer !== correctAnswer) {
+            Alert.alert(`The correct answer is ${correctAnswers[index]}`);
+          }
         }
       });
-
-      puzzleAnswers.forEach((answer, index) => {
-        if (answer !== correctAnswers[index]) {
-          newScore -= 1; // Award -1 points for wrong answer
-        }
-      });
-
-      if(newScore < 0) newScore = 0;
-      // Update the scalar score and store the final score in AsyncStorage
+  
+      // Ensure score doesn't go below 0
+      newScore = Math.max(0, newScore);
+  
+      // Update states and storage
       setPicsWordScore(newScore);
-      await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
-
-      // Set the final score state to display on the screen
-
+      await AsyncStorage.setItem("picsWordScore", newScore.toString());
       setFinalScore(newScore);
+  
+      // Debugging logs
+      console.log("User Answers:", puzzleAnswers);
+      console.log("Calculated Score:", newScore);
     }
-
-    calculateFinalScore(); // Call the function to calculate the score
+  
+    calculateFinalScore();
   }, [setPicsWordScore]);
 
   return (
@@ -84,7 +89,7 @@ const PuzzleFifth = () => {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.goBackButton} onPress={goBack}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/physics")}>
         <Text style={styles.goBackButtonText}>Go Back</Text>
       </TouchableOpacity>
     </View>

@@ -14,8 +14,8 @@ const PuzzleFifth = () => {
   useEffect(() => {
     async function calculateFinalScore() {
       let newScore = 0;
-
-      // Retrieve the alternating Scalar/Vector values from AsyncStorage
+  
+      // Retrieve answers from AsyncStorage
       const puzzleAnswers = await Promise.all([
         AsyncStorage.getItem("selectedQuantity1"),
         AsyncStorage.getItem("selectedQuantity2"),
@@ -28,8 +28,8 @@ const PuzzleFifth = () => {
         AsyncStorage.getItem("selectedQuantity9"),
         AsyncStorage.getItem("selectedQuantity10"),
       ]);
-      console.log("User Answers:", puzzleAnswers);
-      // Correct answers for comparison (assuming Scalar and Vector answers are correct)
+  
+      // Correct answers
       const correctAnswers = [
         "CELL WALL", 
         "NUCLEUS", 
@@ -42,32 +42,33 @@ const PuzzleFifth = () => {
         "VACUOLE", 
         "ENDOPLASMIC RETICULUM"
       ];
-      console.log("Correct Answers:", correctAnswers);
-
-      // Calculate the score by checking if the retrieved values match the correct answers
+  
+      // Calculate score with case-insensitive comparison
       puzzleAnswers.forEach((answer, index) => {
-        if (answer === correctAnswers[index]) {
-          newScore += 1; // Award 1 points for correct answer
+        const normalizedAnswer = answer?.trim().toUpperCase();
+        const normalizedCorrect = correctAnswers[index]?.trim().toUpperCase();
+        
+        if (normalizedAnswer === normalizedCorrect) {
+          newScore += 1; // +1 for correct answer
+        } else if (answer) {
+          newScore -= 1; // -1 for wrong answer (only if answered)
         }
       });
-
-      puzzleAnswers.forEach((answer, index) => {
-        if (answer !== correctAnswers[index]) {
-          newScore -= 1; // Award -1 points for wrong answer
-        }
-      });
-
-      if (newScore < 0) newScore = 0
-
-      // Update the scalar score and store the final score in AsyncStorage
+  
+      // Ensure score doesn't go below 0
+      newScore = Math.max(0, newScore);
+  
+      // Update states and storage
       setOrganelleScore(newScore);
-      await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
-
-      // Set the final score state to display on the screen
+      await AsyncStorage.setItem("organelleScore", newScore.toString());
       setFinalScore(newScore);
+  
+      // Debugging logs
+      console.log("User Answers:", puzzleAnswers);
+      console.log("Calculated Score:", newScore);
     }
-
-    calculateFinalScore(); // Call the function to calculate the score
+  
+    calculateFinalScore();
   }, [setOrganelleScore]);
 
   return (
@@ -78,7 +79,7 @@ const PuzzleFifth = () => {
               <Text style={styles.rightAnswerText}>The Correct Answer:</Text>
               <Text style={styles.subLetter}>
                 1) CELL WALL{"\n"}{"\n"} 
-                2) RIBOSOMES{"\n"}{"\n"}
+                2) NUCLEUS{"\n"}{"\n"}
                 3) RIBOSOMES{"\n"}{"\n"}
                 4) MITOCHONDRIA{"\n"}{"\n"}
                 5) CHLOROPLAST{"\n"}{"\n"}
@@ -100,7 +101,7 @@ const PuzzleFifth = () => {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBackPress}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/biology")}>
         <Text style={styles.goBackButtonText}>Go Back</Text>
       </TouchableOpacity>
     </View>

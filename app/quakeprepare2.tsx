@@ -8,7 +8,7 @@ export default function QuakePrepare() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/earthsci")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 

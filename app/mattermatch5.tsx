@@ -30,11 +30,11 @@ export default function Scalar() {
       <View style={styles.headerDesign}>
       <Text style={styles.headerText}>Match Matter</Text>
       </View>
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/chemistry")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
       <View style={styles.background}>
-      <Image source={require("../utils/pictures/matchmatter/mixture/burger.png")} style={styles.image} />
+      <Image source={require("../utils/pictures/matchmatter/mixture/sushi.png")} style={styles.image} />
 
       <View style={styles.radioGroup}>
         <TouchableOpacity style={styles.radioButton} onPress={() => setSelectedOption("Pure")}>

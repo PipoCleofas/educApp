@@ -68,7 +68,7 @@ const PuzzleFifth = () => {
 
       // Update the scalar score and store the final score in AsyncStorage
       setChemQuizScore(newScore);
-      await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
+      await AsyncStorage.setItem("chemQuizScore", newScore.toString());
       
       // Set the final score state to display on the screen
       setFinalScore(newScore);
@@ -106,8 +106,8 @@ const PuzzleFifth = () => {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBackPress}>
-        <Text style={styles.goBackButtonText}>Go Back</Text>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/chemistry")}>
+        <Text style={styles.goBackButtonText}>Go Back</Text>       
       </TouchableOpacity>
     </View>
   );

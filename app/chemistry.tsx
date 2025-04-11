@@ -1,21 +1,51 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from "react-native";
 import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ChemistryScreen = () => {
   const router = useRouter();
   const { ChemQuizPress, handleMatterMatchPress1 } = useHandleClicks();
-  
+  const [sciQuizScore, setSciQuizScore] = useState<number>(0);
+  const [matterMatchScore, setMatterMatchScore] = useState<number>(0);
+  const [totalScore, setTotalScore] = useState<number>(0);
+
   // Create animated values for floating effect
   const matchMatterAnim = useRef(new Animated.Value(0)).current;
   const sciQuizAnim = useRef(new Animated.Value(0)).current;
   const elementsAnim = useRef(new Animated.Value(0)).current;
 
+  useEffect(() => {
+    // Function to load scores from AsyncStorage
+    const getItem = async () => {
+      try {
+        const storedSciQuizScore = await AsyncStorage.getItem("chemQuizScore");
+        const storedMatterMatchScore = await AsyncStorage.getItem("matterMatchScore");
+
+        if (storedSciQuizScore !== null) {
+          setSciQuizScore(parseInt(storedSciQuizScore, 10));
+        }
+        if (storedMatterMatchScore !== null) {
+          setMatterMatchScore(parseInt(storedMatterMatchScore, 10));
+        }
+      } catch (error) {
+        console.error("Error loading scores:", error);
+      }
+    };
+
+    getItem();
+  }, []);
+
+  useEffect(() => {
+    // Calculate total score whenever individual scores update
+    setTotalScore(sciQuizScore + matterMatchScore);
+  }, [sciQuizScore, matterMatchScore]);
+
   // Set up floating animation
   useEffect(() => {
     // Create animations for each button with slight delays
-    const createFloatingAnimation = (animValue:any, delay:any) => {
+    const createFloatingAnimation = (animValue: any, delay: any) => {
       return Animated.loop(
         Animated.sequence([
           Animated.timing(animValue, {
@@ -52,6 +82,22 @@ const ChemistryScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Scoreboard */}
+      <View style={styles.scoreboard}>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Sci Quiz:</Text>
+          <Text style={styles.scoreValue}>{sciQuizScore}</Text>
+        </View>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Match Matter:</Text>
+          <Text style={styles.scoreValue}>{matterMatchScore}</Text>
+        </View>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Total:</Text>
+          <Text style={styles.scoreValue}>{totalScore}</Text>
+        </View>
+      </View>
+
       {/* Header */}
       <View style={styles.headerdesign}>
         <Text style={styles.title}>Chemistry</Text>
@@ -60,7 +106,7 @@ const ChemistryScreen = () => {
       {/* Exit Button */}
       <TouchableOpacity
         style={styles.exitButton}
-        onPress={() => router.back()}>
+        onPress={() => router.push("/Choose")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
@@ -95,14 +141,37 @@ const ChemistryScreen = () => {
             <Text style={styles.iconText}>🔬</Text>
           </TouchableOpacity>
         </Animated.View>
-
-        
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  scoreboard: {
+    position: 'absolute',
+    top: 80,
+    backgroundColor: 'rgba(226, 186, 203, 0.7)',
+    borderRadius: 15,
+    padding: 15,
+    width: '80%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 20,
+  },
+  scoreItem: {
+    alignItems: 'center',
+  },
+  scoreLabel: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  scoreValue: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: "#C599B6",

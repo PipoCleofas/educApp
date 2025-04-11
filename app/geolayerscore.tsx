@@ -37,7 +37,7 @@ const GeoLayerScore = () => {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.goBackButton} onPress={handleGoBackPress}>
+        <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/earthsci")}>
           <Text style={styles.goBackButtonText}>Go Back</Text>
         </TouchableOpacity>
       </View>

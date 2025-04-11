@@ -1,24 +1,43 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import { useRouter } from "expo-router";
-import { TextInput } from "react-native-gesture-handler";
-import useHandleClicks from "@/hooks/useHandleClicks";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PuzzleFifth = () => {
   const router = useRouter();
-  const { handleGeoSubmitPuzzlePress, setGeoPuzzle5 } = useHandleClicks();
+  const [answer, setAnswer] = React.useState('');
+
+  const handleSubmit = async () => {
+    const correctAnswer = "seismic activity";
+    const userAnswer = answer.trim().toLowerCase();
+    const isCorrect = userAnswer === correctAnswer;
+    
+    console.log("--- Puzzle 5 Debug ---");
+    console.log("User answer:", userAnswer);
+    console.log("Expected answer:", correctAnswer);
+    console.log("Is correct?", isCorrect);
+    
+    try {
+      await AsyncStorage.setItem("puzzleCorrect5", isCorrect.toString());
+      console.log("Saved puzzleCorrect5:", isCorrect);
+      
+      const storedValue = await AsyncStorage.getItem("puzzleCorrect5");
+      console.log("Retrieved puzzleCorrect5:", storedValue);
+      
+      router.push("/geopuzzlescore");
+    } catch (error) {
+      console.error("Error saving answer:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/earthsci")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
-      {/* Title */}
       <Text style={styles.title}>Earth Science</Text>
 
-      {/* Question Section */}
       <View style={styles.questionContainer}>
         <Text style={styles.scrambledText}>S E I I C M S A I I C T T V Y</Text>
         <Text style={styles.questionText}>
@@ -32,11 +51,12 @@ const PuzzleFifth = () => {
           style={styles.input}
           placeholder="Enter your answer..."
           placeholderTextColor="#aaa"
-          onChangeText={(text) => setGeoPuzzle5(text)}
+          onChangeText={setAnswer}
+          value={answer}
         />
 
-        <TouchableOpacity style={styles.nextButton} onPress={handleGeoSubmitPuzzlePress}>
-          <Text style={styles.nextButtonText}>Next</Text>
+        <TouchableOpacity style={styles.nextButton} onPress={handleSubmit}>
+          <Text style={styles.nextButtonText}>Submit</Text>
         </TouchableOpacity>
       </View>
     </View>

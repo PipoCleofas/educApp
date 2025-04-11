@@ -71,7 +71,7 @@ export default function PicsWord() {
 
         {/* Navigation Buttons */}
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.navButton} onPress={() => router.back()}>
+          <TouchableOpacity style={styles.navButton} onPress={() => router.push("/biology")}>
             <Text style={styles.navButtonText}>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navButton} onPress={handleNext}>

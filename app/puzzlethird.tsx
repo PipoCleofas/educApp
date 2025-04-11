@@ -1,24 +1,43 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import { useRouter } from "expo-router";
-import { TextInput } from "react-native-gesture-handler";
-import useHandleClicks from "@/hooks/useHandleClicks";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PuzzleThird = () => {
   const router = useRouter();
-  const { handleGeoThirdPuzzlePress, setGeoPuzzle3 } = useHandleClicks();
+  const [answer, setAnswer] = React.useState('');
+
+  const handleSubmit = async () => {
+    const correctAnswer = "hanging wall";
+    const userAnswer = answer.trim().toLowerCase();
+    const isCorrect = userAnswer === correctAnswer;
+    
+    console.log("--- Puzzle 3 Debug ---");
+    console.log("User answer:", userAnswer);
+    console.log("Expected answer:", correctAnswer);
+    console.log("Is correct?", isCorrect);
+    
+    try {
+      await AsyncStorage.setItem("puzzleCorrect3", isCorrect.toString());
+      console.log("Saved puzzleCorrect3:", isCorrect);
+      
+      const storedValue = await AsyncStorage.getItem("puzzleCorrect3");
+      console.log("Retrieved puzzleCorrect3:", storedValue);
+      
+      router.push("/puzzlefourth");
+    } catch (error) {
+      console.error("Error saving answer:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/earthsci")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
-      {/* Title */}
       <Text style={styles.title}>Earth Science</Text>
 
-      {/* Question Section */}
       <View style={styles.questionContainer}>
         <Text style={styles.scrambledText}>NGGIAHN LWLA</Text>
         <Text style={styles.questionText}>
@@ -31,17 +50,17 @@ const PuzzleThird = () => {
           style={styles.input}
           placeholder="Enter your answer..."
           placeholderTextColor="#aaa"
-          onChangeText={(text) => setGeoPuzzle3(text)}
+          onChangeText={setAnswer}
+          value={answer}
         />
 
-        <TouchableOpacity style={styles.nextButton} onPress={handleGeoThirdPuzzlePress}>
+        <TouchableOpacity style={styles.nextButton} onPress={handleSubmit}>
           <Text style={styles.nextButtonText}>Next</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

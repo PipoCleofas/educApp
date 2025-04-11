@@ -36,7 +36,8 @@ const PuzzleFifth = () => {
         AsyncStorage.getItem("selectedOption15"),
       ]);
       
-      addAchievement("Bio-quiz")
+      await AsyncStorage.setItem("bioQuizScore", newScore.toString());
+
       // Correct answers for comparison (assuming Scalar and Vector answers are correct)
       const correctAnswers = [
         "B. Chloroplast",
@@ -75,7 +76,7 @@ const PuzzleFifth = () => {
 
       // Update the scalar score and store the final score in AsyncStorage
       setOneToFifteenScore(newScore);
-      await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
+      await AsyncStorage.setItem("bioQuizScore", newScore.toString());
       
       // Set the final score state to display on the screen
       setFinalScore(newScore);
@@ -116,7 +117,7 @@ const PuzzleFifth = () => {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBackPress}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/biology")}>
         <Text style={styles.goBackButtonText}>Go Back</Text>
       </TouchableOpacity>
     </View>

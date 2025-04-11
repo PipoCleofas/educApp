@@ -32,7 +32,7 @@ export default function Scalar() {
       </View>
 
       {/* Back Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/chemistry")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 

@@ -36,7 +36,7 @@ const Question13: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerdesign}><Text style={styles.title}>BioQuiz</Text></View>
-        <TouchableOpacity style={styles.exitButton1} onPress={() => router.back()}>
+        <TouchableOpacity style={styles.exitButton1} onPress={() => router.push("/biology")}>
                         <Text style={styles.exitText1}>Back</Text>
                 </TouchableOpacity>
       <View style={styles.quizBox}>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     position: 'absolute' as const,
     top: 5,
     backgroundColor: '#945034',
-    paddingHorizontal: 110,
+    paddingHorizontal: 150,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',

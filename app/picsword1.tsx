@@ -28,7 +28,7 @@ export default function PicsWord() {
   return (
     <View style={styles.container}>
       <View style={styles.headerdesign}><Text style={styles.title}>4 pics 1 word</Text></View>
-        <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+        <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/physics")}>
           <Text style={styles.exitText}>Back</Text>
         </TouchableOpacity>
 

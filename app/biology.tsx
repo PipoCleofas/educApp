@@ -1,19 +1,48 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, Animated } from "react-native";
 import { useRouter } from "expo-router";
 import useHandleClicks from "@/hooks/useHandleClicks";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const BiologyScreen = () => {
   const router = useRouter();
   const { handleBioQuizPress, handleOrganellesPress } = useHandleClicks();
-  
+  const [bioQuizScore, setBioQuizScore] = useState<number>(0);
+  const [organelleScore, setOrganelleScore] = useState<number>(0);
+  const [totalScore, setTotalScore] = useState<number>(0);
 
   const bioQuizAnim = useRef(new Animated.Value(0)).current;
   const organellesAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-   
-    const createFloatingAnimation = (animValue:any, delay:any) => {
+    // Function to load scores from AsyncStorage
+    const loadScores = async () => {
+      try {
+        const storedBioQuizScore = await AsyncStorage.getItem("bioQuizScore");
+        const storedOrganelleScore = await AsyncStorage.getItem("organelleScore");
+
+        if (storedBioQuizScore !== null) {
+          setBioQuizScore(parseInt(storedBioQuizScore, 10));
+        }
+        if (storedOrganelleScore !== null) {
+          setOrganelleScore(parseInt(storedOrganelleScore, 10));
+        }
+      } catch (error) {
+        console.error("Error loading biology scores:", error);
+      }
+    };
+
+    loadScores();
+  }, []);
+
+  useEffect(() => {
+    // Calculate total score whenever individual scores update
+    setTotalScore(bioQuizScore + organelleScore);
+  }, [bioQuizScore, organelleScore]);
+
+  useEffect(() => {
+    // Set up floating animation
+    const createFloatingAnimation = (animValue: any, delay: any) => {
       return Animated.loop(
         Animated.sequence([
           Animated.timing(animValue, {
@@ -23,7 +52,7 @@ const BiologyScreen = () => {
             useNativeDriver: true,
           }),
           Animated.timing(animValue, {
-            toValue: 0, 
+            toValue: 0,
             duration: 1500,
             useNativeDriver: true,
           })
@@ -47,13 +76,29 @@ const BiologyScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Scoreboard */}
+      <View style={styles.scoreboard}>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Bio Quiz:</Text>
+          <Text style={styles.scoreValue}>{bioQuizScore}</Text>
+        </View>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Organelles:</Text>
+          <Text style={styles.scoreValue}>{organelleScore}</Text>
+        </View>
+        <View style={styles.scoreItem}>
+          <Text style={styles.scoreLabel}>Total:</Text>
+          <Text style={styles.scoreValue}>{totalScore}</Text>
+        </View>
+      </View>
+
       {/* Title */}
       <View style={styles.headerdesign}>
         <Text style={styles.title}>Biology</Text>
       </View>
-      
+
       {/* Exit Button */}
-      <TouchableOpacity style={styles.exitButton} onPress={() => router.back()}>
+      <TouchableOpacity style={styles.exitButton} onPress={() => router.push("/Choose")}>
         <Text style={styles.exitText}>Back</Text>
       </TouchableOpacity>
 
@@ -65,8 +110,8 @@ const BiologyScreen = () => {
           marginVertical: 10,
           width: "100%"
         }}>
-          <TouchableOpacity 
-            style={styles.menuButton} 
+          <TouchableOpacity
+            style={styles.menuButton}
             onPress={handleBioQuizPress}
           >
             <View style={styles.whiteCircle}></View>
@@ -81,8 +126,8 @@ const BiologyScreen = () => {
           marginVertical: 10,
           width: "100%"
         }}>
-          <TouchableOpacity 
-            style={styles.menuButton} 
+          <TouchableOpacity
+            style={styles.menuButton}
             onPress={handleOrganellesPress}
           >
             <View style={styles.whiteCircle}></View>
@@ -102,7 +147,31 @@ const BiologyScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  
+  scoreboard: {
+    position: 'absolute',
+    top: 80,
+    backgroundColor: 'rgba(255, 228, 196, 0.7)', // Adjust background color if needed
+    borderRadius: 15,
+    padding: 15,
+    width: '80%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 20,
+  },
+  scoreItem: {
+    alignItems: 'center',
+  },
+  scoreLabel: {
+    color: '#945034', // Adjust text color if needed
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  scoreValue: {
+    color: '#5F8B4C', // Adjust text color if needed
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: "#FFDDAB",
@@ -118,14 +187,14 @@ const styles = StyleSheet.create({
     height: 40,
     width: 50,
     backgroundColor: '#945034',
-    borderRadius: 8, 
+    borderRadius: 8,
   },
   exitText: {
     color: '#fff',
     fontSize: 15,
     fontWeight: '500',
   },
-  headerdesign:{
+  headerdesign: {
     position: 'absolute',
     top: 5,
     backgroundColor: '#945034',

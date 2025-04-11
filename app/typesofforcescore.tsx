@@ -65,7 +65,7 @@ const TypesofForce = () => {
 
       // Update the scalar score and store the final score in AsyncStorage
       setContactForceScore(newScore);
-      await AsyncStorage.setItem("geoPuzzleFinalScore", newScore.toString());
+      await AsyncStorage.setItem("contactForceScore", newScore.toString());
 
       // Set the final score state to display on the screen
       setFinalScore(newScore);
@@ -102,7 +102,7 @@ const TypesofForce = () => {
           </Text>
         </View>
   
-        <TouchableOpacity style={styles.goBackButton} onPress={handleGoBackPress}>
+        <TouchableOpacity style={styles.goBackButton} onPress={() => router.push("/physics")}>
           <Text style={styles.goBackButtonText}>Go Back</Text>
         </TouchableOpacity>
       </View>

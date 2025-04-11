@@ -35,7 +35,7 @@ const Question8: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerdesign}><Text style={styles.title}>Sci Quiz</Text></View>
-        <TouchableOpacity style={styles.exitButton1} onPress={() => router.back()}>
+        <TouchableOpacity style={styles.exitButton1} onPress={() => router.push("/chemistry")}>
                         <Text style={styles.exitText1}>Back</Text>
                 </TouchableOpacity>
       <View style={styles.quizBox}>
